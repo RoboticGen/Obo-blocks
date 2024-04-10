@@ -37,22 +37,25 @@
                         <div class="col s6 m4 l4"> <span class="card-title">Python Code</span></div>
                         <div class="col s6 m8 l8 right">
                             <div class="right">
-                                <a class="waves-effect white btn" style="border-radius: 6px;"><i class="material-icons left" style="color: grey;">content_copy</i><span class="black-text">Copy</span></a>
-                                <a class="waves-effect white btn"style="border-radius: 6px;"><i class="material-icons left" style="color: green;">flag</i><span class="black-text">Run</span></a>
+                                <a class="waves-effect white btn " style="border-radius: 6px;" id="copy-button"><i
+                                        class="material-icons left" style="color: grey;">content_copy</i><span
+                                        class="black-text">Copy</span></a>
+                                <a class="waves-effect white btn disabled" style="border-radius: 6px;" id="run-button"><i
+                                        class="material-icons left" style="color: green;">flag</i><span
+                                        class="black-text">Run</span></a>
                             </div>
-
                         </div>
                         <div class="col s4 m4 l4">
                         </div>
                     </div>
-                    <textarea readonly="true" id="output" style="min-height: 30vh;"></textarea>
+                    <textarea readonly="true" id="output" style="min-height: 30vh;">print(8*7+4)</textarea>
                 </div>
 
             </div>
             <div class="card" style="border-radius: 10px;">
                 <div class="card-content ">
                     <span class="card-title">Terminal Output</span>
-                    <textarea readonly="true" id="output"></textarea>
+                    <textarea readonly="true" id="terminal-output" style="min-height: 30vh;"></textarea>
                 </div>
 
             </div>
@@ -60,5 +63,7 @@
     </div>
 
 </body>
+<script src="https://cdn.jsdelivr.net/pyodide/v0.25.1/full/pyodide.js"></script>
+<script src="script.js"></script>
 
 </html>
