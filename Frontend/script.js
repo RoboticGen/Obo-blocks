@@ -20,7 +20,7 @@ var options = {
     horizontalLayout: false,
     toolboxPosition: 'start',
     css: true,
-    media: '../Media',
+    media: 'Media',
     rtl: false,
     scrollbars: true,
     sounds: true,
