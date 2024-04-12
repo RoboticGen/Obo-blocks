@@ -1,0 +1,28 @@
+/* body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#title {
+    width: 100%;
+    text-align: center;
+} */
+
+#footer {
+    width: 100%;
+    text-align: center;
+}
+
+#content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.blocklyToolboxContents {
+    padding: 0.5em;
+  }
+  /* Adds space between the categories, rounds the corners and adds space around the label. */
+  .blocklyTreeRow {
+    /* padding: 3px; */
+    margin-bottom: 0.5em;
+    border-radius: 4px;
+  }
