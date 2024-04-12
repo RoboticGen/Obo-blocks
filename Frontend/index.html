@@ -8,8 +8,69 @@
         href="https://lh3.googleusercontent.com/drive-viewer/AKGpihZaYFHls38j4U1uto020g4p_98zLpiEfj3mfmfxZxXdrbnOoB0k8AKFuAE2I7i5jBDl3vdbEmiyUYqbJh_RmlZ_ryMeyg=s2560">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <title>Obo Blocks</title>
 </head>
+
+<xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+    <category name="Operators" colour="#5ba55b">
+        <block type="string_block" deletable="true" movable="true" editable="true">
+            <field name="input">Hello World!</field>
+        </block>
+        <block type="number_block" deletable="true" movable="true" editable="true">
+            <field name="input">0</field>
+        </block>
+        <block type="add_block" deletable="true" movable="true" editable="true"></block>
+        <block type="subtract_block" deletable="true" movable="true" editable="true"></block>
+        <block type="multiply_block" deletable="true" movable="true" editable="true"></block>
+        <block type="division_block" deletable="true" movable="true" editable="true"></block>
+        <block type="modulo_block" deletable="true" movable="true" editable="true"></block>
+        <block type="power_block" deletable="true" movable="true" editable="true"></block>
+        <block type="equal_block"></block>
+        <block type="not_equal_block"></block>
+        <block type="greater_than_block" deletable="true" movable="true" editable="true"></block>
+        <block type="greater_than_equal_block" deletable="true" movable="true" editable="true"></block>
+        <block type="less_than_block" deletable="true" movable="true" editable="true"></block>
+        <block type="less_than_equal_block"></block>
+        <block type="true_block" deletable="true" movable="true" editable="true"></block>
+        <block type="false_block"></block>
+        <block type="range_block"></block>
+    </category>
+    <category name="List Operations" colour="#5ba58c">
+        <block type="list_block" deletable="true" movable="true" editable="true">
+            <field name="input">1,2,3</field>
+        </block>
+        <block type="list_append_block" deletable="true" movable="true" editable="true"></block>
+        <block type="list_remove_block"></block>
+        <block type="list_index_get_block" deletable="true" movable="true" editable="true">
+            <field name="index">0</field>
+        </block>
+        <block type="list_index_set_block" deletable="true" movable="true" editable="true">
+            <field name="index">0</field>
+            <field name="value">x</field>
+        </block>
+    </category>
+    <category name="Input/Output" colour="#745ba5">
+        <block type="print_block" deletable="true" movable="true" editable="true"></block>
+        <block type="input_block" deletable="true" movable="true" editable="true">
+            <field name="input">prompt</field>
+        </block>
+    </category>
+    <category name="Control" colour="#9fa55b">
+        <block type="if_block" deletable="true" movable="true" editable="true"></block>
+        <block type="if_else_block" deletable="true" movable="true" editable="true"></block>
+        <block type="while_block" deletable="true" movable="true" editable="true"></block>
+        <block type="for_block" deletable="true" movable="true" editable="true">
+            <field name="variable">index</field>
+        </block>
+        <block type="int_str_conv_block" deletable="true" movable="true" editable="true"></block>
+    </category>
+    <sep></sep>
+    <category name="Functions" colour="#995ba5" custom="PROCEDURE"></category>
+    <category name="Variables" colour="#a55b80" custom="VARIABLE"></category>
+</xml>
+<xml xmlns="https://developers.google.com/blockly/xml" id="workspaceBlocks" style="display: none"></xml>
+
 
 <body class="blue lighten-4">
     <nav style="height: 7vh;">
@@ -34,7 +95,7 @@
             <div class="card " style="border-radius: 10px;">
                 <div class="card-content">
                     <div class="row">
-                        <div class="col s6 m4 l4"> <span class="card-title">Python Code</span></div>
+                        <div class="col s6 m4 l4"> <span class="">Python Code</span></div>
                         <div class="col s6 m8 l8 right">
                             <div class="right">
                                 <a class="waves-effect white btn " style="border-radius: 6px;" id="copy-button"><i
@@ -47,7 +108,7 @@
                         <div class="col s4 m4 l4">
                         </div>
                     </div>
-                    <textarea readonly="true" id="output" style="min-height: 30vh;">print(8*7+4)</textarea>
+                    <textarea readonly="true" id="output" style="min-height: 30vh;"></textarea>
                 </div>
 
             </div>
@@ -63,6 +124,10 @@
 
 </body>
 <script src="https://cdn.jsdelivr.net/pyodide/v0.25.1/full/pyodide.js"></script>
-<script src="script.js"></script>
+<script src="https://unpkg.com/blockly/blockly.min.js"></script>
+<script src="https://unpkg.com/blockly/python_compressed"></script>
+<script src="../script.js"></script>
+<script src="../Blocks/block_definitions.js"></script>
+<script src="../Blocks/block_generations.js"></script>
 
 </html>
