@@ -3,12 +3,13 @@ const runcodeButton = document.getElementById('run-button');
 const runButtonIcon = document.getElementById('run-icon');
 const runButtonText = document.getElementById('run-text');
 const codeGenerated = document.getElementById('output');
+const preCode = document.getElementById('pre-code');
 const terminal = document.getElementById('terminal-output');
 var toolbox = document.getElementById("toolbox");
 const loadingIcon = document.createElement('i');
 loadingIcon.className = 'material-icons left';
 loadingIcon.innerHTML = 'cycle';
-
+let pyodide;
 
 var options = {
     toolbox: toolbox,
@@ -42,10 +43,6 @@ var options = {
     renderer: 'zelos',
 };
 
-var workspace = Blockly.inject("editor", options);
-
-var workspaceBlocks = document.getElementById("workspaceBlocks");
-
 class CustomCategory extends Blockly.ToolboxCategory {
     /**
      * Constructor for a custom category.
@@ -54,13 +51,39 @@ class CustomCategory extends Blockly.ToolboxCategory {
     constructor(categoryDef, toolbox, opt_parent) {
         super(categoryDef, toolbox, opt_parent);
     }
+    /** @override */
+    addColourBorder_(colour) {
+        this.rowDiv_.style.backgroundColor = colour;
+    }
+    setSelected(isSelected){
+        // We do not store the label span on the category, so use getElementsByClassName.
+        var labelDom = this.rowDiv_.getElementsByClassName('blocklyTreeLabel')[0];
+        if (isSelected) {
+          // Change the background color of the div to white.
+          this.rowDiv_.style.backgroundColor = 'white';
+          // Set the colour of the text to the colour of the category.
+          labelDom.style.color = this.colour_;
+          this.iconDom_.style.color = this.colour_;
+        } else {
+          // Set the background back to the original colour.
+          this.rowDiv_.style.backgroundColor = this.colour_;
+          // Set the text back to white.
+          labelDom.style.color = 'white';
+          this.iconDom_.style.color = 'white';
+        }
+        // This is used for accessibility purposes.
+        Blockly.utils.aria.setState(/** @type {!Element} */ (this.htmlDiv_),
+            Blockly.utils.aria.State.SELECTED, isSelected);
+     }
 }
-
 Blockly.registry.register(
     Blockly.registry.Type.TOOLBOX_ITEM,
     Blockly.ToolboxCategory.registrationName,
     CustomCategory, true);
-Blockly.Xml.domToWorkspace(workspaceBlocks, workspace);
+var workspace = Blockly.inject("editor", options);
+
+var workspaceBlocks = document.getElementById("workspaceBlocks");
+
 
 const supportedEvents = new Set([
     Blockly.Events.BLOCK_CHANGE,
@@ -72,19 +95,24 @@ const supportedEvents = new Set([
 function updateCode(event) {
     if (workspace.isDragging()) return;
     if (!supportedEvents.has(event.type)) return;
-
+    if (preCode.hasAttribute("data-highlighted")) {
+        preCode.removeAttribute("data-highlighted");
+    }
     const code = python.pythonGenerator.workspaceToCode(workspace);
     codeGenerated.innerHTML = code;
+    preCode.innerHTML = codeGenerated.innerHTML;
+    console.log(code);
+    hljs.highlightAll();
 }
 
 
 async function runcode() {
     try {
-        runcodeButton.className = 'waves-effect white btn disabled';
-        runButtonText.innerHTML = 'Running...';
+        runcodeButton.setAttribute('disabled', true);
+        runButtonText.innerHTML = 'Running';
         let code = codeGenerated.innerHTML;
         let output = pyodide.runPython(code);
-        runcodeButton.className = 'waves-effect white btn';
+        runcodeButton.removeAttribute('disabled');
         runButtonText.innerHTML = 'Run';
     } catch (err) {
         console.error('Error running code:', err);
@@ -102,7 +130,7 @@ async function copyTextToClipboard(textToCopy) {
 }
 
 copyButton.addEventListener('click', () => {
-    let code = codeGenerated.innerHTML;
+    let code = preCode.innerText;
     copyTextToClipboard(code);
 });
 
@@ -112,17 +140,18 @@ runcodeButton.addEventListener('click', () => {
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        runcodeButton.className = 'waves-effect white btn disabled';
-        runButtonIcon.innerText = 'cloud_download';
+        runcodeButton.setAttribute('disabled', true);
+        runcodeButton.style.width = '6rem';
+        runcodeButton.isdisabled = true;
         runButtonText.innerHTML = 'Loading...';
-        runButtonIcon.style.color = 'yellow';
+        runButtonIcon.className = 'fa fa-spinner';
         pyodide = await loadPyodide();
-        runcodeButton.className = 'waves-effect white btn'; // Enable run button after Pyodide is loaded
-        runButtonIcon.innerText = 'flag';
+        runcodeButton.removeAttribute('disabled');
+        runcodeButton.style.width = '4rem';
         runButtonText.innerHTML = 'Run';
-        runButtonIcon.style.color = 'green';
-        terminal.innerHTML += 'Python 3.10 \n>>>'
-        pyodide.setStdout({ batched: (msg) => terminal.innerHTML += msg + '\n>>>' });
+        runButtonIcon.className = 'fa fa-play';
+        terminal.innerHTML += 'Python 3.10 \n>>> '
+        pyodide.setStdout({ batched: (msg) => terminal.innerHTML += msg + '\n>>> ' });
     } catch (err) {
         console.error('Failed to load Pyodide:', err);
     }
