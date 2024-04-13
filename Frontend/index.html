@@ -6,14 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png"
         href="https://lh3.googleusercontent.com/drive-viewer/AKGpihZaYFHls38j4U1uto020g4p_98zLpiEfj3mfmfxZxXdrbnOoB0k8AKFuAE2I7i5jBDl3vdbEmiyUYqbJh_RmlZ_ryMeyg=s2560">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="../Frontend/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <title>Obo Blocks</title>
 </head>
 
 <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
-    <category name="Operators" colour="#5ba55b">
+    <category name="Operators" colour="rgb(91, 165, 91)" css-icon="customIcon fa fa-cog">
         <block type="string_block" deletable="true" movable="true" editable="true">
             <field name="input">Hello World!</field>
         </block>
@@ -36,7 +44,7 @@
         <block type="false_block"></block>
         <block type="range_block"></block>
     </category>
-    <category name="List Operations" colour="#5ba58c">
+    <category name="List Operations" colour="#5ba58c" css-icon="customIcon fa fa-list">
         <block type="list_block" deletable="true" movable="true" editable="true">
             <field name="input">1,2,3</field>
         </block>
@@ -50,13 +58,13 @@
             <field name="value">x</field>
         </block>
     </category>
-    <category name="Input/Output" colour="#745ba5">
+    <category name="Input/Output" colour="#745ba5" css-icon="customIcon fa fa-file">
         <block type="print_block" deletable="true" movable="true" editable="true"></block>
         <block type="input_block" deletable="true" movable="true" editable="true">
             <field name="input">prompt</field>
         </block>
     </category>
-    <category name="Control" colour="#9fa55b">
+    <category name="Control" colour="#9fa55b" css-icon="customIcon fa fa-sitemap">
         <block type="if_block" deletable="true" movable="true" editable="true"></block>
         <block type="if_else_block" deletable="true" movable="true" editable="true"></block>
         <block type="while_block" deletable="true" movable="true" editable="true"></block>
@@ -66,62 +74,49 @@
         <block type="int_str_conv_block" deletable="true" movable="true" editable="true"></block>
     </category>
     <sep></sep>
-    <category name="Functions" colour="#995ba5" custom="PROCEDURE"></category>
-    <category name="Variables" colour="#a55b80" custom="VARIABLE"></category>
+    <category name="Functions" colour="#995ba5" custom="PROCEDURE" css-icon="customIcon fa fa-cubes"></category>
+    <category name="Variables" colour="#a55b80" custom="VARIABLE" css-icon="customIcon fa fa-bath"></category>
 </xml>
 <xml xmlns="https://developers.google.com/blockly/xml" id="workspaceBlocks" style="display: none"></xml>
 
 
-<body class="blue lighten-4">
-    <nav style="height: 7vh;">
-        <div class="nav-wrapper white">
-            <a href="#" class="brand-logo blue-text">Obo Blocks</a>
-            <a href="https://roboticgenacademy.com/" class="right brand-logo">
-                <img src="https://framerusercontent.com/images/tdeDCpW3vyZ0FmSkx7W258hWXow.png" alt=""
-                    style="width: 118px; height: 50px;">
+
+<body>
+    <div class="container">
+        <nav class="nav-bar">
+            <a href="">
+                <img src="../Frontend/Media/OBO_BLOCKS.png" class="obo-blocks-logo">
             </a>
+            <a href="https://roboticgenacademy.com/">
+                <img src="https://framerusercontent.com/images/tdeDCpW3vyZ0FmSkx7W258hWXow.png" alt="" class="logo">
+            </a>
+        </nav>
+
+        <div class="blocky-editor">
+            <div class="editor" id="editor"></div>
         </div>
-    </nav>
-    <div class="row">
-        <div class="col s12 m12 l8">
-            <div class="card white darken-1" style="border-radius: 10px;">
-                <div class="card-content black-text">
-                    <span class="card-title">Workspace</span>
-                    <div id="editor" style="height: 80vh; width: 100%;"></div>
+        <div class="code">
+            <div class="button-row">
+                <h3>Python Code</h3>
+                <div class="button-group">
+                    <a class="button" id="run-button"><i id="run-icon" class="fa fa-flag"></i> <span id="run-text">Run</span></a>
+                    <a class="button" id="copy-button"><i class="fa fa-copy"></i><span id = "copy-text">Copy</span></a>
                 </div>
             </div>
-        </div>
-        <div class="col s12 m6 l4">
-            <div class="card " style="border-radius: 10px;">
-                <div class="card-content">
-                    <div class="row">
-                        <div class="col s6 m4 l4"> <span class="">Python Code</span></div>
-                        <div class="col s6 m8 l8 right">
-                            <div class="right">
-                                <a class="waves-effect white btn " style="border-radius: 6px;" id="copy-button"><i
-                                        class="material-icons left" style="color: grey;">content_copy</i><span
-                                        class="black-text">Copy</span></a>
-                                <a class="waves-effect white btn" style="border-radius: 6px;" id="run-button"><i id = "run-icon" class="material-icons left" style="color: green;">flag</i><span id="run-text"
-                                        class="black-text">Run</span></a>
-                            </div>
-                        </div>
-                        <div class="col s4 m4 l4">
-                        </div>
-                    </div>
-                    <textarea readonly="true" id="output" style="min-height: 30vh;"></textarea>
-                </div>
+            <div class="code-snippet">
+                <textarea name="" id="output" cols="30" rows="10" hidden></textarea>
+                <pre>
+                    <code readonly = "true" class="python" id = "pre-code">
+                </code>
+            </pre>
 
             </div>
-            <div class="card" style="border-radius: 10px;">
-                <div class="card-content ">
-                    <span class="card-title">Terminal Output</span>
-                    <textarea readonly="true" id="terminal-output" style="min-height: 30vh;"></textarea>
-                </div>
-
-            </div>
+        </div>
+        <div class="output">
+            <h3>Output</h3>
+            <textarea id="terminal-output" class="terminal-output" rows="10" readonly></textarea>
         </div>
     </div>
-
 </body>
 <script src="https://cdn.jsdelivr.net/pyodide/v0.25.1/full/pyodide.js"></script>
 <script src="https://unpkg.com/blockly/blockly.min.js"></script>
