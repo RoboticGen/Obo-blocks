@@ -1,4 +1,5 @@
-# Obo Blocks
+# Obo Blocks 
+![Obo Blocks](Frontend/Media/OBO_BLOCKS.png)
 
 **Scratch Blocks to Python Converter with Pydiode Evaluation**
 
@@ -43,23 +44,19 @@ Obo Blocks is a project aimed at easing the transition from visual programming t
 - Completion of Requirements Gathering and Analysis
 - Completion of Design and Architecture
 - Frontend Development Releases 
-    - 1.0 #
-    - 2.0
-    - 3.0 
+    - 1.0 commit c25f7c5178f79c5a1c7ed85b64d7db72b95ed78a
+    - 2.0 commit 047d8a2d920c9d22b4a18bb9eb8f3e2abf60551d
+    - 3.0 commit f79b8f28bf75131145f1721808597b278f6d9aae
     - 4.0
     - 5.0
 - Backend Development Releases 
-    - 1.0
-    - 2.0
-    - 3.0
+    - 1.0 commit c25f7c5178f79c5a1c7ed85b64d7db72b95ed78a
+    - 2.0 commit 047d8a2d920c9d22b4a18bb9eb8f3e2abf60551d
+    - 3.0 commit f79b8f28bf75131145f1721808597b278f6d9aae
     - 4.0
     - 5.0
 - Integration and Testing stable Release
 - Final Deployment
-
-## Budget
-
-*(Budget details not provided)*
 
 ## Dependencies
 
@@ -74,5 +71,27 @@ Clone this repository using the following command:
 ```bash
 git clone https://github.com/yasanthaniroshan/Obo-blocks.git
 ```
-Serve [index.html] using a local server.
+Serve [index.html](Frontend/index.html) using a local server.
 
+## Usage
+
+You can access the Obo Blocks platform by opening [oboblocks](https://oboblocks.roboticgenacademy.com/) in a web browser.
+
+## Documentation
+
+For detailed documentation, refer to the [docs](docs) directory.
+- [SRS](docs/SRS.md)
+- [SDD](docs/SDD.md)
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+
+This project is under Roboticgen Academy. 
+![Roboticgen Academy](https://framerusercontent.com/images/tdeDCpW3vyZ0FmSkx7W258hWXow.png)
+
+## Contact
+
+Contact the project maintainers at : [@yasanthaniroshan](https://github.com/yasanthaniroshan)
