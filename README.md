@@ -44,7 +44,7 @@ Obo Blocks is a project aimed at easing the transition from visual programming t
 - Completion of Requirements Gathering and Analysis
 - Completion of Design and Architecture
 - Frontend Development Releases 
-    - 1.0 commit c25f7c5178f79c5a1c7ed85b64d7db72b95ed78a
+    - 1.0 https://github.com/yasanthaniroshan/Obo-blocks/commitc25f7c5178f79c5a1c7ed85b64d7db72b95ed78a
     - 2.0 commit 047d8a2d920c9d22b4a18bb9eb8f3e2abf60551d
     - 3.0 commit f79b8f28bf75131145f1721808597b278f6d9aae
     - 4.0
