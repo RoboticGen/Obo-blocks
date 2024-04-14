@@ -1,3 +1,5 @@
+# SDD
+
 # Obo Blocks
 
 ## **Software** **Design Document**
@@ -11,7 +13,7 @@
 
 ## Reference
 
-[SRS](SRS.md)
+Private ([https://app.clickup.com/37017639/docs/139p17-9038/139p17-20518](https://app.clickup.com/37017639/docs/139p17-9038/139p17-20518))
 
 ## Introduction
 
@@ -86,7 +88,7 @@ The technology stack of obo blocks will be as follow
 
 ### Infrastructure and DevOps
 
-Hosting/Cloud Provider : Github Pages for Development and AWS for Deployment
+Hosting/Cloud Provider : Netlify for Development and AWS for Deployment
 
 ### Deployment Diagram
 
@@ -105,15 +107,4 @@ Hosting/Cloud Provider : Github Pages for Development and AWS for Deployment
 *   [Pydiode](https://pyodide.org/en/stable/)
 *   [Materialize](https://materializecss.com/)
 
-###
-
-# Untitled
-
-
-
-# Untitled
-
-
-
-# Untitled
-
+  
