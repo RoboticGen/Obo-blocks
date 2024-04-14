@@ -44,15 +44,15 @@ Obo Blocks is a project aimed at easing the transition from visual programming t
 - Completion of Requirements Gathering and Analysis
 - Completion of Design and Architecture
 - Frontend Development Releases 
-    - 1.0 https://github.com/yasanthaniroshan/Obo-blocks/commitc25f7c5178f79c5a1c7ed85b64d7db72b95ed78a
-    - 2.0 commit 047d8a2d920c9d22b4a18bb9eb8f3e2abf60551d
-    - 3.0 commit f79b8f28bf75131145f1721808597b278f6d9aae
+    - 1.0 [Commit 01](https://github.com/yasanthaniroshan/Obo-blocks/commit/c25f7c5178f79c5a1c7ed85b64d7db72b95ed78a)
+    - 2.0 [Commit 02](https://github.com/yasanthaniroshan/Obo-blocks/commit/047d8a2d920c9d22b4a18bb9eb8f3e2abf60551d)
+    - 3.0 [Commit 03](https://github.com/yasanthaniroshan/Obo-blocks/commit/f79b8f28bf75131145f1721808597b278f6d9aae)
     - 4.0
     - 5.0
 - Backend Development Releases 
-    - 1.0 commit c25f7c5178f79c5a1c7ed85b64d7db72b95ed78a
-    - 2.0 commit 047d8a2d920c9d22b4a18bb9eb8f3e2abf60551d
-    - 3.0 commit f79b8f28bf75131145f1721808597b278f6d9aae
+    - 1.0 [Commit 01](https://github.com/yasanthaniroshan/Obo-blocks/commit/c25f7c5178f79c5a1c7ed85b64d7db72b95ed78a)
+    - 2.0 [Commit 02](https://github.com/yasanthaniroshan/Obo-blocks/commit/047d8a2d920c9d22b4a18bb9eb8f3e2abf60551d)
+    - 3.0 [Commit 03](https://github.com/yasanthaniroshan/Obo-blocks/commit/f79b8f28bf75131145f1721808597b278f6d9aae)
     - 4.0
     - 5.0
 - Integration and Testing stable Release
@@ -61,8 +61,8 @@ Obo Blocks is a project aimed at easing the transition from visual programming t
 ## Dependencies
 
 - [Blocky](https://developers.google.com/blockly)
+- [Python](https://www.python.org/)
 - [Pydiode](https://pyodide.org/en/stable/)
-- [Materialize](https://materializecss.com/)
 
 ## Installation
 
@@ -92,6 +92,9 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 This project is under Roboticgen Academy. 
 ![Roboticgen Academy](https://framerusercontent.com/images/tdeDCpW3vyZ0FmSkx7W258hWXow.png)
 
-## Contact
+## Contributors
 
-Contact the project maintainers at : [@yasanthaniroshan](https://github.com/yasanthaniroshan)
+[@yasanthaniroshan](https://github.com/yasanthaniroshan)
+
+[@SeniruD](https://github.com/SeniruD)
+

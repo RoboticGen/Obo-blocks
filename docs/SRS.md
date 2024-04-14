@@ -1,8 +1,4 @@
-# SRS
-
-# Obo Blocks
-
-**Software Requirement Specification**
+# **Software Requirement Specification**
 
 ## Version History
 
