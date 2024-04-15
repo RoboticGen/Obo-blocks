@@ -71,7 +71,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 ## License
 
 This project is under Roboticgen Academy. 
-![Roboticgen Academy](https://framerusercontent.com/images/tdeDCpW3vyZ0FmSkx7W258hWXow.png)
+![Roboticgen Academy](Frontend/Media/academyLogo.png)
 
 ## Contributors
 
