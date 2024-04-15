@@ -21,7 +21,7 @@
 </head>
 
 <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
-    <category name="Operators" colour="rgb(91, 165, 91)" css-icon="customIcon fa fa-cog">
+    <category name="Operators" colour="#59C059" css-icon="customIcon fa fa-cog">
         <block type="string_block" deletable="true" movable="true" editable="true">
             <field name="input">Hello World!</field>
         </block>
@@ -43,6 +43,8 @@
         <block type="true_block" deletable="true" movable="true" editable="true"></block>
         <block type="false_block"></block>
         <block type="range_block"></block>
+        <block type="int_str_conv_block" deletable="true" movable="true" editable="true"></block>
+
     </category>
     <category name="List Operations" colour="#5ba58c" css-icon="customIcon fa fa-list">
         <block type="list_block" deletable="true" movable="true" editable="true">
@@ -71,7 +73,6 @@
         <block type="for_block" deletable="true" movable="true" editable="true">
             <field name="variable">index</field>
         </block>
-        <block type="int_str_conv_block" deletable="true" movable="true" editable="true"></block>
     </category>
     <sep></sep>
     <category name="Functions" colour="#995ba5" custom="PROCEDURE" css-icon="customIcon fa fa-cubes"></category>
@@ -88,7 +89,7 @@
                 <img src="Media/OBO_BLOCKS.png" class="obo-blocks-logo">
             </a>
             <a href="https://roboticgenacademy.com/">
-                <img src="https://framerusercontent.com/images/tdeDCpW3vyZ0FmSkx7W258hWXow.png" alt="" class="logo">
+                <img src="Media/academyLogo.png" alt="" class="logo">
             </a>
         </nav>
 
@@ -97,7 +98,7 @@
         </div>
         <div class="code">
             <div class="button-row">
-                <h3>Python Code</h3>
+                <p class="code-title">Python Code</p>
                 <div class="button-group">
                     <a class="button" id="run-button"><i id="run-icon" class="fa fa-flag"></i> <span id="run-text">Run</span></a>
                     <a class="button" id="copy-button"><i class="fa fa-copy"></i><span id = "copy-text">Copy</span></a>
@@ -113,7 +114,7 @@
             </div>
         </div>
         <div class="output">
-            <h3>Output</h3>
+            <p class="output-title">Output</p>
             <textarea id="terminal-output" class="terminal-output" rows="10" readonly></textarea>
         </div>
     </div>
