@@ -72,7 +72,10 @@ The technology stack of obo blocks will be as follow
 
 ### External APIs and Services
 
-*   Third-Party APIs: Blocky,Pydiode
+*   Third-Party APIs: 
+    - Blocky
+    - Pydiode
+    - Highlightjs
 
 ### Development Tools and Utilities
 
@@ -101,5 +104,6 @@ Hosting/Cloud Provider : Netlify for Development and AWS for Deployment
 *   [Blocky](https://developers.google.com/blockly)
 *   [Python](https://www.python.org/)
 *   [Pydiode](https://pyodide.org/en/stable/)
+*   [Highlightjs](https://highlightjs.org/)
 
   

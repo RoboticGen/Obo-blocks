@@ -61,6 +61,7 @@ For detailed documentation, refer to the [docs](docs) directory.
 - [Blocky](https://developers.google.com/blockly)
 - [Python](https://www.python.org/)
 - [Pydiode](https://pyodide.org/en/stable/)
+- [Highlight.js](https://highlightjs.org/)
 
 
 ## Contributing
