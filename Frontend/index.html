@@ -21,6 +21,34 @@
 </head>
 
 <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+    <category name="Input/Output" colour="#4C97FF" css-icon="customIcon fa fa-file">
+        <block type="print_block" deletable="true" movable="true" editable="true"></block>
+        <block type="input_block" deletable="true" movable="true" editable="true">
+            <field name="input">prompt</field>
+        </block>
+    </category>
+    <category name="List Operations" colour="#CF63CF" css-icon="customIcon fa fa-list">
+        <block type="list_block" deletable="true" movable="true" editable="true">
+            <field name="input">1,2,3</field>
+        </block>
+        <block type="list_append_block" deletable="true" movable="true" editable="true"></block>
+        <block type="list_remove_block"></block>
+        <block type="list_index_get_block" deletable="true" movable="true" editable="true">
+            <field name="index">0</field>
+        </block>
+        <block type="list_index_set_block" deletable="true" movable="true" editable="true">
+            <field name="index">0</field>
+            <field name="value">x</field>
+        </block>
+    </category>
+    <category name="Control" colour="#FFBF00" css-icon="customIcon fa fa-sitemap">
+        <block type="if_block" deletable="true" movable="true" editable="true"></block>
+        <block type="if_else_block" deletable="true" movable="true" editable="true"></block>
+        <block type="while_block" deletable="true" movable="true" editable="true"></block>
+        <block type="for_block" deletable="true" movable="true" editable="true">
+            <field name="variable">index</field>
+        </block>
+    </category>
     <category name="Operators" colour="#59C059" css-icon="customIcon fa fa-cog">
         <block type="string_block" deletable="true" movable="true" editable="true">
             <field name="input">Hello World!</field>
@@ -46,37 +74,12 @@
         <block type="int_str_conv_block" deletable="true" movable="true" editable="true"></block>
 
     </category>
-    <category name="List Operations" colour="#5ba58c" css-icon="customIcon fa fa-list">
-        <block type="list_block" deletable="true" movable="true" editable="true">
-            <field name="input">1,2,3</field>
-        </block>
-        <block type="list_append_block" deletable="true" movable="true" editable="true"></block>
-        <block type="list_remove_block"></block>
-        <block type="list_index_get_block" deletable="true" movable="true" editable="true">
-            <field name="index">0</field>
-        </block>
-        <block type="list_index_set_block" deletable="true" movable="true" editable="true">
-            <field name="index">0</field>
-            <field name="value">x</field>
-        </block>
-    </category>
-    <category name="Input/Output" colour="#745ba5" css-icon="customIcon fa fa-file">
-        <block type="print_block" deletable="true" movable="true" editable="true"></block>
-        <block type="input_block" deletable="true" movable="true" editable="true">
-            <field name="input">prompt</field>
-        </block>
-    </category>
-    <category name="Control" colour="#9fa55b" css-icon="customIcon fa fa-sitemap">
-        <block type="if_block" deletable="true" movable="true" editable="true"></block>
-        <block type="if_else_block" deletable="true" movable="true" editable="true"></block>
-        <block type="while_block" deletable="true" movable="true" editable="true"></block>
-        <block type="for_block" deletable="true" movable="true" editable="true">
-            <field name="variable">index</field>
-        </block>
-    </category>
+
+
     <sep></sep>
-    <category name="Functions" colour="#995ba5" custom="PROCEDURE" css-icon="customIcon fa fa-cubes"></category>
-    <category name="Variables" colour="#a55b80" custom="VARIABLE" css-icon="customIcon fa fa-bath"></category>
+    <category name="Variables" colour="#FF8C1A" custom="VARIABLE" css-icon="customIcon fa fa-bath"></category>
+
+    <category name="Functions" colour="#FF6680" custom="PROCEDURE" css-icon="customIcon fa fa-cubes"></category>
 </xml>
 <xml xmlns="https://developers.google.com/blockly/xml" id="workspaceBlocks" style="display: none"></xml>
 
@@ -100,8 +103,9 @@
             <div class="button-row">
                 <p class="code-title">Python Code</p>
                 <div class="button-group">
-                    <a class="button" id="run-button"><i id="run-icon" class="fa fa-flag"></i> <span id="run-text">Run</span></a>
-                    <a class="button" id="copy-button"><i class="fa fa-copy"></i><span id = "copy-text">Copy</span></a>
+                    <a class="button" id="run-button"><i id="run-icon" class="fa fa-flag"></i> <span
+                            id="run-text">Run</span></a>
+                    <a class="button" id="copy-button"><i class="fa fa-copy"></i><span id="copy-text">Copy</span></a>
                 </div>
             </div>
             <div class="code-snippet">
@@ -114,8 +118,16 @@
             </div>
         </div>
         <div class="output">
-            <p class="output-title">Output</p>
-            <textarea id="terminal-output" class="terminal-output" rows="10" readonly></textarea>
+            <div class="button-row">
+                <p class="output-title">Output</p>
+                <div class="button-group">
+                    <a class="button" id="clear-button"><i id="run-clear" class="fa fa-trash"></i> <span
+                            id="run-text">Clear</span></a>
+                </div>
+            </div>
+            <div class="terminal-output-div">
+                <textarea id="terminal-output" class="terminal-output" rows="10" readonly></textarea>
+            </div>
         </div>
     </div>
 </body>
