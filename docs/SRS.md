@@ -150,3 +150,4 @@ This release will update for the Release 3.0 with added support for code upload 
 *   [Blocky](https://developers.google.com/blockly)
 *   [Python](https://www.python.org/)
 *   [Pydiode](https://pyodide.org/en/stable/)
+*   [Highlightjs](https://highlightjs.org/)
