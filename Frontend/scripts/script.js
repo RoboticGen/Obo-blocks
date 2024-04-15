@@ -11,6 +11,8 @@ loadingIcon.className = 'material-icons left';
 loadingIcon.innerHTML = 'cycle';
 let pyodide;
 
+
+
 var options = {
     toolbox: toolbox,
     collapse: true,
@@ -41,6 +43,7 @@ var options = {
         scaleSpeed: 1.2
     },
     renderer: 'zelos',
+
 };
 
 class CustomCategory extends Blockly.ToolboxCategory {
@@ -80,10 +83,12 @@ Blockly.registry.register(
     Blockly.registry.Type.TOOLBOX_ITEM,
     Blockly.ToolboxCategory.registrationName,
     CustomCategory, true);
+
 var workspace = Blockly.inject("editor", options);
 
 var workspaceBlocks = document.getElementById("workspaceBlocks");
-
+Blockly.utils.colour.setHsvSaturation(0.54);
+Blockly.utils.colour.setHsvValue(0.75);
 
 const supportedEvents = new Set([
     Blockly.Events.BLOCK_CHANGE,

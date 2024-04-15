@@ -468,7 +468,7 @@ Blockly.Blocks['string_block'] = {
   Blockly.Blocks['int_str_conv_block'] = {
     init: function() {
       this.appendDummyInput()
-          .appendField("String to Integer")
+          .appendField("str")
           .appendField(new Blockly.FieldNumber(0, 0, Infinity, 1), "number")
       this.setOutput(true, null);
       this.setColour(120);
