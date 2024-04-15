@@ -5,7 +5,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color:#1f63a3ec;
+    background-color:#184772ec;
     margin: 0;
     padding: 0;
 }
@@ -113,8 +113,14 @@
     background-color: #f3f3f3;
     width: 100%;
     height: 100%;
-}
+    max-height: 35rem;
+    overflow-y: auto;
 
+}
+.python
+{
+    display: block;
+}
 .output {
     grid-area: output;
     background-color: white;
@@ -123,12 +129,19 @@
     box-shadow: 2px 3px 18px 0px rgba(0, 0, 0, 0.34);
     padding: 0.2rem;
     margin-right: 0.5rem;
-
+    overflow-y: auto;
 }
 .output-title
 {
     margin: 1rem;
     font-weight: 500;
+
+}
+
+.terminal-output-div
+{
+    overflow-y: visible;
+    max-height: 10rem;
 
 }
 .terminal-output
@@ -139,15 +152,19 @@
     height: 70%; 
     resize: none;
     border: none;
+    display: block;
+
 }
-.terminal-output::-webkit-scrollbar {
-    width: 0.5rem;
-}
+
 .terminal-output:focus{
     border: 0 none #FFF;
     overflow: hidden;
     outline:none;
 }
+#clear-button:hover {
+    background-color: #DB9E14;
+}
+
 
 .container {
     display: grid;
