@@ -83,35 +83,33 @@ Obo Blocks will communicate with ESP32 Devices to upoload micropython code
 
 Here is breakdown of development phase with durations
 
-- [ ]     - [ ]     Requirements Gathering and Analysis - **1 week**
-    - [ ]     Design and Architecture - **3 weeks**
-    - [ ]     Frontend Development - **6 weeks**
-    - [ ]     Backend Development - **6 weeks**
-    - [ ]     Integration and Testing - **6 weeks**
-    - [ ]     Deployment - **2 weeks**
+- Requirements Gathering and Analysis - **1 week**
+    - Design and Architecture - **3 weeks**
+    - Frontend Development - **6 weeks**
+    - Backend Development - **6 weeks**
+    - Integration and Testing - **6 weeks**
+    - Deployment - **2 weeks**
 
 ### Milestones
 
-- [ ]     - [ ]     Completion of Requirements Gathering and Analysis
-    - [ ]     Completion of Design and Architecture
-    - [ ]     Frontend Development
-        - [ ]     Release 1.0
-        - [ ]     Release 2.0
-        - [ ]     Release 3.0
-        - [ ]     Release 4.0
-        - [ ]     Release 5.0
-- [ ]     - [ ]     Backend Development
-        - [ ]     Release 1.0
-        - [ ]     Release 2.0
-        - [ ]     Release 3.0
-        - [ ]     Release 4.0
-        - [ ]     Release 5.0
-- [ ]     - [ ]     Integration and Testing
-    - [ ]     Final Deployment
+- [x] Completion of Requirements Gathering and Analysis
+- [x] Completion of Design and Architecture
+- Frontend Development
+    - [x] Release 1.0
+    - [x] Release 2.0
+    - [x] Release 3.0
+    - [ ] Release 4.0
+    - [ ] Release 5.0
+- Backend Development
+    - [x] Release 1.0
+    - [x] Release 2.0
+    - [x] Release 3.0
+    - [ ] Release 4.0
+    - [ ] Release 5.0
+- [ ] Integration and Testing
+- [ ]     Final Deployment
 
 ## **Budget**
-
-  
 
 ## Appendix
 
