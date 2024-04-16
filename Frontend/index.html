@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png"
         href="https://lh3.googleusercontent.com/drive-viewer/AKGpihZaYFHls38j4U1uto020g4p_98zLpiEfj3mfmfxZxXdrbnOoB0k8AKFuAE2I7i5jBDl3vdbEmiyUYqbJh_RmlZ_ryMeyg=s2560">
-    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <link rel="stylesheet" href="styles/styles.css">
@@ -15,8 +16,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Obo Blocks</title>
 </head>
 
@@ -49,7 +51,7 @@
             <field name="variable">index</field>
         </block>
     </category>
-    <category name="Operators" colour="#59C059" css-icon="customIcon fa fa-cog">
+    <category name="Operators" colour="#59C059" css-icon="customIcon fa fa-gear">
         <block type="string_block" deletable="true" movable="true" editable="true">
             <field name="input">Hello World!</field>
         </block>
@@ -75,9 +77,8 @@
 
     </category>
 
-
     <sep></sep>
-    <category name="Variables" colour="#FF8C1A" custom="VARIABLE" css-icon="customIcon fa fa-bath"></category>
+    <category name="Variables" colour="#FF8C1A" custom="VARIABLE" css-icon="customIcon fa fa-inbox"></category>
 
     <category name="Functions" colour="#FF6680" custom="PROCEDURE" css-icon="customIcon fa fa-cubes"></category>
 </xml>
@@ -96,13 +97,14 @@
             </a>
         </nav>
 
-        <div class="blocky-editor">
+        <div class="blocky-editor" id="blocky-editor">
             <div class="editor" id="editor"></div>
         </div>
         <div class="code">
             <div class="button-row">
                 <p class="code-title">Python Code</p>
                 <div class="button-group">
+                    <!-- <a class="button" id="edit-button"><i class="fa fa-pencil"></i> <span id="run-text">Edit</span></a> -->
                     <a class="button" id="run-button"><i id="run-icon" class="fa fa-flag"></i> <span
                             id="run-text">Run</span></a>
                     <a class="button" id="copy-button"><i class="fa fa-copy"></i><span id="copy-text">Copy</span></a>
@@ -111,7 +113,7 @@
             <div class="code-snippet">
                 <textarea name="" id="output" cols="30" rows="10" hidden></textarea>
                 <pre>
-                    <code readonly = "true" class="python" id = "pre-code">
+                    <code class="python" id = "pre-code">
                 </code>
             </pre>
 
