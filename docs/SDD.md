@@ -4,8 +4,8 @@
 
 | Version | Date | Status |
 | ---| ---| --- |
-| 1.0 | 09/04/2024 | Approval Pending |
-|  |  |  |
+| 1.0 | 09/04/2024 | Approved |
+| 1.1 | 16/04/2024 | Pending Approval |
 
 ## Reference
 
@@ -19,7 +19,8 @@ This document outlines the design and architecture of Obo Blocks, a Scratch Bloc
 
 ### Scope
 
-Obo Blocks will allow users to convert programs written in Scratch Blocks into Python code and provide code interpretation capabilities with limited libraries using Pydiode. Additionally, it will support micropython extension, enabling users to run their Python code directly within the web interface and upload generated code to ESP32 Development Board (MagicBit).
+Obo Blocks will allow users to convert programs written in Scratch Blocks, a visual programming language, into Python code. Additionally, it will provide code interpretation capabilities with limited number of libraries using Pydiode while supporting micropython extention, enabling users to edit the generated Python code snippets,run their Python code directly within the web interface while allowing users to upload generated code to ESP32 Development Board (MagicBit).The target users include students and teachers affiliated with Roboticgen Academy.
+
 
 ## Design and Architecture
 

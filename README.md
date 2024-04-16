@@ -11,9 +11,10 @@ Obo Blocks is a project aimed at easing the transition from visual programming t
 ## Features
 
 1. **Block-to-Code Conversion -** Convert Scratch Blocks programs into equivalent Python code.
-2. **Code Evaluation -** Interpret Python code within the platform using Pydiode for instant feedback.
-3. **Micropython Extension -** Emulate underlaying hardware for to run micropython code with in platform(With Completion of Coffee Code Research Project)
-4. **Web Driven Code Uploader** - Upload generated Code Snippet to generated Code Snippet to ESP32
+2. **Code Modification** - Modify generated python code without Backward Compatibility (python to scratch conversion)
+3. **Code Evaluation -** Interpret Python code within the platform using Pydiode for instant feedback.
+4. **Micropython Extension -** Emulate underlaying hardware for to run micropython code with in platform(With Completion of Coffee Code Research Project)
+5. **Web Driven Code Uploader** - Upload generated Code Snippet to generated Code Snippet to ESP32
 
 ## Components
 
