@@ -5,7 +5,8 @@
 | Version | Date | Status |
 | ---| ---| --- |
 | 1.0 | 02/04/2024 | Approved |
-| 1.1 | 08/04/2024 | Pending Approval |
+| 1.1 | 08/04/2024 | Approved |
+| 1.2 | 16/04/2024 | Pending Approval |
 
 ## Introduction
 
@@ -13,14 +14,15 @@ The purpose of this document is to outline the requirements for the development 
 
 ## Scope
 
-Obo Blocks will allow users to convert programs written in Scratch Blocks, a visual programming language, into Python code. Additionally, it will provide code interpretation capabilities with limited number of libraries using Pydiode while supporting micropython extention, enabling users to run their Python code directly within the web interface while allowing users to upload generated code to ESP32 Development Board (MagicBit).The target users include students and teachers affiliated with Roboticgen Academy.
+Obo Blocks will allow users to convert programs written in Scratch Blocks, a visual programming language, into Python code. Additionally, it will provide code interpretation capabilities with limited number of libraries using Pydiode while supporting micropython extention, enabling users to edit the generated Python code snippets,run their Python code directly within the web interface while allowing users to upload generated code to ESP32 Development Board (MagicBit).The target users include students and teachers affiliated with Roboticgen Academy.
 
 ## Features
 
 1. **Block-to-Code Conversion -** Convert Scratch Blocks programs into equivalent Python code.
-2. **Code Evaluation -** Interpret Python code within the platform using Pydiode for instant feedback.
-3. **Micropython Extension -** Emulate underlaying hardware for to run micropython code with in platform(With Completion of Coffee Code Research Project)
-4. **Web Driven Code Uploader** - Upload generated Code Snippet to generated Code Snippet to ESP32
+2. **Code Modification** - Modify generated python code without Backward Compatibility (python to scratch conversion)
+3. **Code Evaluation -** Interpret Python code within the platform using Pydiode for instant feedback.
+4. **Micropython Extension -** Emulate underlaying hardware for to run micropython code with in platform(With Completion of Coffee Code Research Project)
+5. **Web Driven Code Uploader** - Upload generated Code Snippet to generated Code Snippet to ESP32
 
 ## Functional Requirements
 
@@ -29,6 +31,11 @@ Obo Blocks will allow users to convert programs written in Scratch Blocks, a vis
 1. **Translate Scratch Blocks to Python**: Convert Scratch Blocks programs into equivalent Python code.
 2. **Support for Common Blocks**: Ensure support for common programming constructs such as logics,loops,conditionals,variables and functions.
 3. **Error Handling**: Provide informative error messages for unsupported blocks or invalid configurations.
+
+#### Code Modification
+
+1. **Syntax Highlighting** : Highlighting python syntax while users modifying python code snippets
+2. **Autocompletion and Code Suggestion** : Autocompleting and code suggesting when users modifying code snippets
 
 #### Code Evaluation
 
@@ -54,7 +61,7 @@ Obo Blocks will allow users to convert programs written in Scratch Blocks, a vis
 Obo blocks will only interact with users on desktop-related devices.
 
 *   **Blockly Workspace**: Interface for building programs using Scratch Blocks.
-*   **Code Viewer** : Display Python code generated from Scratch Blocks and with read-only
+*   **Code Viewer/Editor** : Display Python code generated from Scratch Blocks and with modification facility
 *   **Output Console**: Display execution output and errors when evaluating Python code.
 
 ### Hardware Interfaces
@@ -85,8 +92,8 @@ Here is breakdown of development phase with durations
 
 - Requirements Gathering and Analysis - **1 week**
     - Design and Architecture - **3 weeks**
-    - Frontend Development - **6 weeks**
-    - Backend Development - **6 weeks**
+    - Frontend Development - **8 weeks**
+    - Backend Development - **8 weeks**
     - Integration and Testing - **6 weeks**
     - Deployment - **2 weeks**
 
@@ -100,12 +107,14 @@ Here is breakdown of development phase with durations
     - [x] Release 3.0
     - [ ] Release 4.0
     - [ ] Release 5.0
+    - [ ] Release 6.0
 - Backend Development
     - [x] Release 1.0
     - [x] Release 2.0
     - [x] Release 3.0
     - [ ] Release 4.0
     - [ ] Release 5.0
+    - [ ] Release 6.0
 - [ ] Integration and Testing
 - [ ]     Final Deployment
 
@@ -127,11 +136,15 @@ This release will update for the Release 2.0 with added support for python code 
 
 ### Release 4.0
 
-This release will update for the Release 3.0 with added support for micropython scratch blocks
+This release will update for the Release 3.0 with added support for code modification facility
 
 ### Release 5.0
 
-This release will update for the Release 3.0 with added support for code upload to ESP32 (Magicbit)
+This release will update for the Release 4.0 with added support for micropython scratch blocks
+
+### Release 6.0
+
+This release will update for the Release 5.0 with added support for code upload to ESP32 (Magicbit)
 
 ## **Glossary**
 
@@ -150,4 +163,3 @@ This release will update for the Release 3.0 with added support for code upload 
 *   [Blocky](https://developers.google.com/blockly)
 *   [Python](https://www.python.org/)
 *   [Pydiode](https://pyodide.org/en/stable/)
-*   [Highlightjs](https://highlightjs.org/)
