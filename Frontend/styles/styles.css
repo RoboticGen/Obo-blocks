@@ -5,7 +5,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color:#184772ec;
+    background-color:#1a3a59ec;
     margin: 0;
     padding: 0;
 }
@@ -120,6 +120,11 @@
 .python
 {
     display: block;
+}
+
+.disabled {
+    pointer-events: none; /* Disable pointer events */
+    opacity: 0.6; /* Optionally, make it visually indicate the disabled state */
 }
 .output {
     grid-area: output;
