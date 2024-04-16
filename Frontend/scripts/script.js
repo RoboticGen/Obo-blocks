@@ -1,6 +1,7 @@
 const copyButton = document.getElementById('copy-button');
 const runcodeButton = document.getElementById('run-button');
 const clearButton = document.getElementById('clear-button');
+const editButton = document.getElementById('edit-button');
 const runButtonIcon = document.getElementById('run-icon');
 const runButtonText = document.getElementById('run-text');
 const codeGenerated = document.getElementById('output');
@@ -164,6 +165,15 @@ runcodeButton.addEventListener('click', () => {
 clearButton.addEventListener('click', () => {
     terminal.innerHTML = 'Python 3.10 \n>>> ';
 });
+
+// editButton.addEventListener('click', async () => {
+//     console.log('Edit button clicked');
+//     workspace.setVisible(false);
+//     let newpyscript = document.createElement('script');
+//     newpyscript.type = 'py-editor';
+//     newpyscript.target = 'code-snippet'; 
+//     await newpyscript.process('print("Hello world!")');
+// });
 
 
 worker.onerror = function (event) {

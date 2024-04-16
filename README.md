@@ -7,62 +7,34 @@
 
 Obo Blocks is a project aimed at easing the transition from visual programming to text-based programming, specifically targeting students and teachers at [Roboticgen Academy](https://roboticgenacademy.com/). This tool enables users to convert programs written in Scratch Blocks into Python code and provides code interpretation using Pydiode. Additionally, it supports micropython extensions for running Python code directly within the web interface.
 
+
 ## Features
 
-- **Block-to-Code Conversion :** Convert Scratch Blocks programs into equivalent Python code.
-- **Code Evaluation :** Interpret Python code within the platform using Pydiode for instant feedback.
-- **Micropython Extension :** Run micropython code directly within the platform.
+1. **Block-to-Code Conversion -** Convert Scratch Blocks programs into equivalent Python code.
+2. **Code Evaluation -** Interpret Python code within the platform using Pydiode for instant feedback.
+3. **Micropython Extension -** Emulate underlaying hardware for to run micropython code with in platform(With Completion of Coffee Code Research Project)
+4. **Web Driven Code Uploader** - Upload generated Code Snippet to generated Code Snippet to ESP32
 
-## Development Phases
+## Components
 
-- [x] Requirements Gathering and Analysis
-    - Duration: 1 week
-    - Status : Completed
+- **Blockly Workspace** : Interface for building programs using Scratch Blocks.
+- **Code Converter** : Converts Scratch Blocks programs into Python code.
+- **Code Interpreter** : Executes Python code within the browser environment.
+- **Code Uploader** : Uploads generated code to ESP32 Development Board (MagicBit).
+- **Error Handler** : Handles errors and provides informative messages to users. 
 
-- [x] Design and Architecture
-    - Duration: 3 weeks
-    - Status : Completed
+Diagram of the components and their communication is shown below:
 
-- [ ] Frontend Development
-    - Duration: 6 weeks
-    - Status : In Progress
+![Component Communication](docs/images/componentcommunication.png)
 
-- [ ] Backend Development
-    - Duration: 6 weeks
-    - Status : Pending
+### User Interfaces
 
-- [ ] Integration and Testing
-    - Duration: 6 weeks
-    - Status : Pending
+Obo blocks will only interact with users on desktop-related devices.
 
-- [ ] Deployment
-    - Duration: 2 weeks
-    - Status : In Progress
+*   **Blockly Workspace**: Interface for building programs using Scratch Blocks.
+*   **Code Viewer** : Display Python code generated from Scratch Blocks and with read-only
+*   **Output Console**: Display execution output and errors when evaluating Python code.
 
-## Milestones
-
-- Completion of Requirements Gathering and Analysis
-- Completion of Design and Architecture
-- Frontend Development Releases 
-    - 1.0 [Commit 01](https://github.com/yasanthaniroshan/Obo-blocks/commit/c25f7c5178f79c5a1c7ed85b64d7db72b95ed78a)
-    - 2.0 [Commit 02](https://github.com/yasanthaniroshan/Obo-blocks/commit/047d8a2d920c9d22b4a18bb9eb8f3e2abf60551d)
-    - 3.0 [Commit 03](https://github.com/yasanthaniroshan/Obo-blocks/commit/f79b8f28bf75131145f1721808597b278f6d9aae)
-    - 4.0
-    - 5.0
-- Backend Development Releases 
-    - 1.0 [Commit 01](https://github.com/yasanthaniroshan/Obo-blocks/commit/c25f7c5178f79c5a1c7ed85b64d7db72b95ed78a)
-    - 2.0 [Commit 02](https://github.com/yasanthaniroshan/Obo-blocks/commit/047d8a2d920c9d22b4a18bb9eb8f3e2abf60551d)
-    - 3.0 [Commit 03](https://github.com/yasanthaniroshan/Obo-blocks/commit/f79b8f28bf75131145f1721808597b278f6d9aae)
-    - 4.0
-    - 5.0
-- Integration and Testing stable Release
-- Final Deployment
-
-## Dependencies
-
-- [Blocky](https://developers.google.com/blockly)
-- [Python](https://www.python.org/)
-- [Pydiode](https://pyodide.org/en/stable/)
 
 ## Installation
 
@@ -80,8 +52,17 @@ You can access the Obo Blocks platform by opening [oboblocks](https://oboblocks.
 ## Documentation
 
 For detailed documentation, refer to the [docs](docs) directory.
-- [SRS](docs/SRS.md)
-- [SDD](docs/SDD.md)
+- [Software Requirement Document](docs/SRS.md)
+- [Software Design Document](docs/SDD.md)
+
+
+## Dependencies
+
+- [Blocky](https://developers.google.com/blockly)
+- [Python](https://www.python.org/)
+- [Pydiode](https://pyodide.org/en/stable/)
+- [Highlight.js](https://highlightjs.org/)
+
 
 ## Contributing
 
@@ -90,7 +71,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 ## License
 
 This project is under Roboticgen Academy. 
-![Roboticgen Academy](https://framerusercontent.com/images/tdeDCpW3vyZ0FmSkx7W258hWXow.png)
+![Roboticgen Academy](Frontend/Media/academyLogo.png)
 
 ## Contributors
 
