@@ -1,5 +1,5 @@
 # Obo Blocks 
-![Obo Blocks](Frontend/Media/OBO_BLOCKS.png)
+![Obo Blocks](/src/assets/obo_blocks.png)
 
 **Scratch Blocks to Python Converter with Pydiode Evaluation**
 
