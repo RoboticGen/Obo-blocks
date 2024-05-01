@@ -1,0 +1,245 @@
+.nav-bar {
+    grid-area: navBar;
+    position: sticky;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color:#1a3a59ec;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-bar h3 {
+    margin: 10px;
+}
+
+.logo {
+    width: 7.8rem;
+    height: 2.3rem;
+    margin: 0.5rem 1.5rem 0.5rem 0.5rem;
+}
+
+.obo-blocks-logo {
+    width: 16.46rem;
+    height: 2.8rem;
+    margin: 0.5rem 0.5rem 0.5rem 1rem;
+}
+
+.blocky-editor {
+    grid-area: editor;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.6rem;
+    background-color: white;
+    border: 0.1rem solid rgba(77,151,255,.25);
+    padding: 0rem 0.2rem 0.2rem 0.2rem;
+    box-shadow: 2px 3px 18px 0px rgba(0, 0, 0, 0.34);
+    margin-left: 0.5rem;
+}
+
+.editor {
+    height: 99%;
+    width: 99%;
+}
+
+.code {
+    grid-area: code;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.7rem;
+    background-color: white;
+    border: 0.1rem solid rgba(77,151,255,.25);
+    padding: 0.2rem;
+    margin-right: 0.5rem;
+    box-shadow: 2px 3px 18px 0px rgba(0, 0, 0, 0.34);
+}
+.code-title
+{
+    margin: 1rem;
+    font-weight: 500;
+}
+
+.button-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 0.5rem;
+
+}
+
+.button-group a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin:0.2rem;
+    padding: 0.3rem;
+    width: 4rem;
+    height: 1.4rem;
+    border-radius: 0.3rem;
+    border: none;
+    color: #ffffff;
+    font-weight: 400;
+    font-size: medium;
+    background-color: #9D9D9D;    
+}
+.button-group button:hover {
+    cursor: pointer;
+}
+#run-button:hover {
+    background-color: #45BD98;
+}
+
+#copy-button:hover {
+    background-color:#32AAC6;
+}
+
+.code-snippet {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    background-color: #f3f3f3;
+    width: 100%;
+    height: 100%;
+    max-height: 35rem;
+    overflow-y: auto;
+
+}
+.python
+{
+    display: block;
+}
+
+.disabled {
+    pointer-events: none; /* Disable pointer events */
+    opacity: 0.6; /* Optionally, make it visually indicate the disabled state */
+}
+.output {
+    grid-area: output;
+    background-color: white;
+    border-radius: 0.7rem;
+    border: 0.1rem solid rgba(77,151,255,.25);
+    box-shadow: 2px 3px 18px 0px rgba(0, 0, 0, 0.34);
+    padding: 0.2rem;
+    margin-right: 0.5rem;
+    overflow-y: auto;
+}
+.output-title
+{
+    margin: 1rem;
+    font-weight: 500;
+
+}
+
+.terminal-output-div
+{
+    overflow-y: visible;
+    max-height: 10rem;
+
+}
+.terminal-output
+{
+    margin-left: 1rem;
+    color: #9D9D9D;
+    width: 95%; 
+    height: 70%; 
+    resize: none;
+    border: none;
+    display: block;
+
+}
+
+.terminal-output:focus{
+    border: 0 none #FFF;
+    overflow: hidden;
+    outline:none;
+}
+#clear-button:hover {
+    background-color: #DB9E14;
+}
+
+
+.container {
+    display: grid;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    grid-template-rows: 1fr 8fr 3fr;
+    grid-template-areas:
+        "navBar navBar navBar navBar"
+        "editor editor editor code"
+        "editor editor editor output";
+    grid-gap: 0.5rem;
+    height: calc(100vh - 0.5rem);
+}
+
+body {
+    background-color:rgba(77,151,255,.25);
+    margin: 0;
+}
+.blocklyMainBackground
+{
+    stroke:none;
+}
+
+.blocklyToolboxDiv {
+    background-color: #f3f3f3;
+}
+
+/* Makes our label white. */
+.blocklyTreeLabel {
+    color: white;
+}
+
+/* Adds padding around the group of categories and separators. */
+.blocklyToolboxContents {
+    padding: 0.5em;
+}
+
+/* Adds space between the categories, rounds the corners and adds space around the label. */
+.blocklyTreeRow {
+    padding: 3px;
+    margin-bottom: 0.5em;
+    border-radius: 4px;
+}
+
+/* Changes color of the icon to white. */
+.customIcon {
+    color: white;
+    padding: 0.5em;
+}
+
+/* Stacks the icon on top of the label. */
+.blocklyTreeRowContentContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+}
+
+.blocklyTreeRow {
+    height: initial;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        grid-template-areas:
+            "navBar navBar navBar navBar"
+            "editor editor editor editor"
+            "code code code code"
+            "output output output output";
+    }
+
+}
