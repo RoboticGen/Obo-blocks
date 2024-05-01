@@ -44,7 +44,14 @@ Clone this repository using the following command:
 ```bash
 git clone https://github.com/yasanthaniroshan/Obo-blocks.git
 ```
-Serve [index.html](Frontend/index.html) using a local server.
+Install dependencies:
+```bash
+npm install
+```
+Serve the frontend using:
+```bash
+npm run dev
+```
 
 ## Usage
 
