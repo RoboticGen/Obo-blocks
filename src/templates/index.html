@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Obo Blocks</title>
+</head>
+
+<xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+    <category name="Input/Output" colour="#4C97FF" css-icon="customIcon fa fa-file">
+        <block type="print_block" deletable="true" movable="true" editable="true"></block>
+        <block type="input_block" deletable="true" movable="true" editable="true">
+            <field name="input">prompt</field>
+        </block>
+    </category>
+    <category name="List Operations" colour="#CF63CF" css-icon="customIcon fa fa-list">
+        <block type="list_block" deletable="true" movable="true" editable="true">
+            <field name="input">1,2,3</field>
+        </block>
+        <block type="list_append_block" deletable="true" movable="true" editable="true"></block>
+        <block type="list_remove_block"></block>
+        <block type="list_index_get_block" deletable="true" movable="true" editable="true">
+            <field name="index">0</field>
+        </block>
+        <block type="list_index_set_block" deletable="true" movable="true" editable="true">
+            <field name="index">0</field>
+            <field name="value">x</field>
+        </block>
+    </category>
+    <category name="Control" colour="#FFBF00" css-icon="customIcon fa fa-sitemap">
+        <block type="if_block" deletable="true" movable="true" editable="true"></block>
+        <block type="if_else_block" deletable="true" movable="true" editable="true"></block>
+        <block type="while_block" deletable="true" movable="true" editable="true"></block>
+        <block type="for_block" deletable="true" movable="true" editable="true">
+            <field name="variable">index</field>
+        </block>
+    </category>
+    <category name="Operators" colour="#59C059" css-icon="customIcon fa fa-gear">
+        <block type="string_block" deletable="true" movable="true" editable="true">
+            <field name="input">Hello World!</field>
+        </block>
+        <block type="number_block" deletable="true" movable="true" editable="true">
+            <field name="input">0</field>
+        </block>
+        <block type="add_block" deletable="true" movable="true" editable="true"></block>
+        <block type="subtract_block" deletable="true" movable="true" editable="true"></block>
+        <block type="multiply_block" deletable="true" movable="true" editable="true"></block>
+        <block type="division_block" deletable="true" movable="true" editable="true"></block>
+        <block type="modulo_block" deletable="true" movable="true" editable="true"></block>
+        <block type="power_block" deletable="true" movable="true" editable="true"></block>
+        <block type="equal_block"></block>
+        <block type="not_equal_block"></block>
+        <block type="greater_than_block" deletable="true" movable="true" editable="true"></block>
+        <block type="greater_than_equal_block" deletable="true" movable="true" editable="true"></block>
+        <block type="less_than_block" deletable="true" movable="true" editable="true"></block>
+        <block type="less_than_equal_block"></block>
+        <block type="true_block" deletable="true" movable="true" editable="true"></block>
+        <block type="false_block"></block>
+        <block type="range_block"></block>
+        <block type="int_str_conv_block" deletable="true" movable="true" editable="true"></block>
+
+    </category>
+
+    <sep></sep>
+    <category name="Variables" colour="#FF8C1A" custom="VARIABLE" css-icon="customIcon fa fa-inbox"></category>
+
+    <category name="Functions" colour="#FF6680" custom="PROCEDURE" css-icon="customIcon fa fa-cubes"></category>
+</xml>
+<xml xmlns="https://developers.google.com/blockly/xml" id="workspaceBlocks" style="display: none"></xml>
+
+
+
+<body>
+    <div class="container">
+        <nav class="nav-bar">
+            <a href="">
+                <img id = "obo-blocks-logo" class="obo-blocks-logo">
+            </a>
+            <a href="https://roboticgenacademy.com/">
+                <img id = "roboticgen-academy-logo" alt="" class="logo">
+            </a>
+        </nav>
+
+        <div class="blocky-editor" id="blocky-editor">
+            <div class="editor" id="editor"></div>
+        </div>
+        <div class="code">
+            <div class="button-row">
+                <p class="code-title">Python Code</p>
+                <div class="button-group">
+                    <!-- <a class="button" id="edit-button"><i class="fa fa-pencil"></i> <span id="run-text">Edit</span></a> -->
+                    <a class="button" id="run-button"><i id="run-icon" class="fa fa-flag"></i> <span
+                            id="run-text">Run</span></a>
+                    <a class="button" id="copy-button"><i class="fa fa-copy"></i><span id="copy-text">Copy</span></a>
+                </div>
+            </div>
+            <div class="code-snippet" id="code-editor">
+            </pre>
+
+            </div>
+        </div>
+        <div class="output">
+            <div class="button-row">
+                <p class="output-title">Output</p>
+                <div class="button-group">
+                    <a class="button" id="clear-button"><i id="run-clear" class="fa fa-trash"></i> <span
+                            id="run-text">Clear</span></a>
+                </div>
+            </div>
+            <div class="terminal-output-div">
+                <textarea id="terminal-output" class="terminal-output" rows="10" readonly></textarea>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

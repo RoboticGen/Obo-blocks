@@ -1,0 +1,25 @@
+{
+  "name": "obo-blocks",
+  "version": "4.0.0",
+  "description": "About",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "webpack serve",
+    "build": "webpack"
+  },
+  "author": "Yasantha Niroshan",
+  "license": "ISC",
+  "devDependencies": {
+    "@codemirror/lang-python": "^6.1.6",
+    "codemirror": "^6.0.1",
+    "css-loader": "^7.1.1",
+    "html-webpack-plugin": "^5.6.0",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
+  }
+}
