@@ -1,6 +1,7 @@
 const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin')
 
+
 module.exports = {
     mode: 'development',
     entry:
@@ -10,19 +11,23 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name][contenthash].js',
-        clean:true,
-        assetModuleFilename:'[name][ext]',
+        clean: true,
+        assetModuleFilename: '[name][ext]',
     },
-    devtool:'source-map',
-    devServer:{
+    devtool: 'source-map',
+    devServer: {
         static:
         {
-            directory:path.resolve(__dirname,'dist')
+            directory: path.resolve(__dirname, 'dist')
         },
-        port:8081,
-        open:true,
-        hot:true,
-        compress:true,
+        headers: {
+            "Cross-Origin-Opener-Policy": "same-origin",
+            "Cross-Origin-Embedder-Policy": "require-corp"
+        },
+        port: 8081,
+        open: true,
+        hot: true,
+        compress: true,
     },
     module: {
         rules: [
@@ -34,8 +39,8 @@ module.exports = {
                 ],
             },
             {
-                test:/\.(png|jpg|jpeg)$/i,
-                type:'asset/resource'
+                test: /\.(png|jpg|jpeg)$/i,
+                type: 'asset/resource'
             },
         ],
     },
@@ -43,9 +48,9 @@ module.exports = {
         new htmlWebpackPlugin(
             {
                 filename: "index.html",
-                template:'src/templates/index.html',
+                template: 'src/templates/index.html',
             }
-        )
+        ),
     ]
 };
 

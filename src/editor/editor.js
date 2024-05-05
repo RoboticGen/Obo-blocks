@@ -8,7 +8,7 @@ const editableCompartment = new Compartment;
 
 // Initialize the editor state
 const state = EditorState.create({
-  doc: "print('Hello, world!')", // Set initial content here
+  doc: "", // Set initial content here
   extensions: [
     basicSetup,
     python(),

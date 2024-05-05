@@ -33,7 +33,7 @@ export const toolbox = {
       {
         'kind': 'category',
         'name': 'List Operations',
-        'categorystyle': 'loop_category',
+        'categorystyle': 'list_operations_category',
         'contents': [
           {
             'kind': 'block',
