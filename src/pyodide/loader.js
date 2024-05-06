@@ -1,10 +1,8 @@
 let terminal = document.getElementById('terminal-output');
-let interruptBuffer;
 let worker;
 
 function startWorker() {
     worker = new Worker(new URL('./worker.js', import.meta.url))
-    interruptBuffer = new Uint8Array(new SharedArrayBuffer(1));
     worker.onerror = function (event) {
         console.error('Worker error: ', event.message, event.filename, event.lineno);
     };
