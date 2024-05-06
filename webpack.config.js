@@ -8,7 +8,9 @@ module.exports = {
     mode: 'development',
     entry:
     {
+        css: path.resolve(__dirname, 'src/styles/index.css'),
         bundle: path.resolve(__dirname, 'src/index.js'),
+    
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -41,7 +43,7 @@ module.exports = {
                 ],
             },
             {
-                test: /\.(png|jpg|jpeg)$/i,
+                test: /\.(png|jpg|jpeg|webp)$/i,
                 type: 'asset/resource'
             },
         ],
