@@ -1,5 +1,5 @@
 # Obo Blocks 
-![Obo Blocks](Frontend/Media/OBO_BLOCKS.png)
+![Obo Blocks](/src/assets/obo_blocks.png)
 
 **Scratch Blocks to Python Converter with Pydiode Evaluation**
 
@@ -11,9 +11,10 @@ Obo Blocks is a project aimed at easing the transition from visual programming t
 ## Features
 
 1. **Block-to-Code Conversion -** Convert Scratch Blocks programs into equivalent Python code.
-2. **Code Evaluation -** Interpret Python code within the platform using Pydiode for instant feedback.
-3. **Micropython Extension -** Emulate underlaying hardware for to run micropython code with in platform(With Completion of Coffee Code Research Project)
-4. **Web Driven Code Uploader** - Upload generated Code Snippet to generated Code Snippet to ESP32
+2. **Code Modification** - Modify generated python code without Backward Compatibility (python to scratch conversion)
+3. **Code Evaluation -** Interpret Python code within the platform using Pydiode for instant feedback.
+4. **Micropython Extension -** Emulate underlaying hardware for to run micropython code with in platform(With Completion of Coffee Code Research Project)
+5. **Web Driven Code Uploader** - Upload generated Code Snippet to generated Code Snippet to ESP32
 
 ## Components
 
@@ -43,7 +44,14 @@ Clone this repository using the following command:
 ```bash
 git clone https://github.com/yasanthaniroshan/Obo-blocks.git
 ```
-Serve [index.html](Frontend/index.html) using a local server.
+Install dependencies:
+```bash
+npm install
+```
+Serve the frontend using:
+```bash
+npm run dev
+```
 
 ## Usage
 
@@ -61,7 +69,7 @@ For detailed documentation, refer to the [docs](docs) directory.
 - [Blocky](https://developers.google.com/blockly)
 - [Python](https://www.python.org/)
 - [Pydiode](https://pyodide.org/en/stable/)
-- [Highlight.js](https://highlightjs.org/)
+- [Codemirror](https://codemirror.net/)
 
 
 ## Contributing
@@ -71,7 +79,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 ## License
 
 This project is under Roboticgen Academy. 
-![Roboticgen Academy](Frontend/Media/academyLogo.png)
+![Roboticgen Academy](./src/assets/academyLogo.png)
 
 ## Contributors
 
