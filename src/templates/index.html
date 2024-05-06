@@ -7,8 +7,9 @@
         content="Obo Blocks : Convert Scratch Blocks to Python with Pydiode interpretation support and MicroPython extensions for seamless web-based Python execution.">
     <meta name="keywords"
         content="Obo Blocks,python,google,scratch,Blockly,visual programming,pyodide,web application,roboticgen academy,roboticgen">
-    <link rel="icon" href="favicon.ico">
-    <title>Obo Blocks</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="favicon.ico">
+        <title>Obo Blocks</title>
 </head>
 
 <body>
@@ -17,11 +18,11 @@
     </div>
     <div class="container">
         <nav class="nav-bar">
-            <a href="https://oboblocks.roboticgenacademy.com/">
-                <img id="obo-blocks-logo" class="obo-blocks-logo">
+            <a href="https://oboblocks.roboticgenacademy.com/" aria-label="Obo Blocks Home">
+                <img id="obo-blocks-logo" class="obo-blocks-logo" alt="Obo Blocks Logo">
             </a>
-            <a href="https://roboticgenacademy.com/">
-                <img id="roboticgen-academy-logo" alt="" class="logo">
+            <a href="https://roboticgenacademy.com/" aria-label="Roboticgen Academy">
+                <img id="roboticgen-academy-logo" alt="Roboticgen Academy Logo" class="logo">
             </a>
         </nav>
 
@@ -55,6 +56,7 @@
                 </div>
             </div>
             <div class="terminal-output-div">
+                <label for="terminal-output"></label>
                 <textarea id="terminal-output" class="terminal-output" rows="10" readonly></textarea>
             </div>
         </div>
