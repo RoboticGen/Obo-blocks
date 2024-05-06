@@ -9,7 +9,7 @@ import oboBlocksLogo from './assets/obo_blocks.png'
 import academyLogo from './assets/academyLogo.png'
 
 
-import { editor, insertPythonSnippet, makeUneditable ,saveAsPythonFile } from './editor/editor'
+import { editor, insertPythonSnippet, makeUneditable, saveAsPythonFile } from './editor/editor'
 
 
 import * as Blockly from 'blockly'
@@ -19,7 +19,7 @@ import { forBlock } from './blocky/generator';
 import { blocks } from './blocky/blocks';
 import { OboCategory } from './blocky/categories';
 import { theme } from './blocky/themes';
-import { save,load } from './blocky/serialization'
+import { save, load } from './blocky/serialization'
 
 import { worker, terminal, stopWorker } from './pyodide/loader'
 
@@ -130,11 +130,22 @@ editbutton.addEventListener('click', function () {
         save(ws)
         ws.dispose()
     }
-    else
-    {
+    else {
         editbuttonText.innerHTML = 'Edit'
         ws = Blockly.inject(blocklyDiv, options);
         load(ws)
+        ws.addChangeListener((e) => {
+            // Don't run the code when the workspace finishes loading; we're
+            // already running it once when the application starts.
+            // Don't run the code during drags; we might have invalid state.
+            if (e.isUiEvent || e.type == Blockly.Events.FINISHED_LOADING ||
+                ws.isDragging()) {
+                return;
+            }
+            save(ws)
+            const code = pythonGenerator.workspaceToCode(ws);
+            insertPythonSnippet(code)
+        });
         const code = pythonGenerator.workspaceToCode(ws);
         insertPythonSnippet(code)
         showNotification("Editing disabled");

@@ -51,6 +51,7 @@ module.exports = {
             {
                 filename: "index.html",
                 template: 'src/templates/index.html',
+                favicon: "./src/assets/favicon.ico",
             }
         ),
         new CopyWebpackPlugin({
