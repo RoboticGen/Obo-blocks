@@ -9,18 +9,22 @@ const categoryStyles = {
         'colour': '#CF63CF',
         'css-icon':"fa fa-file"
      },
-     'Input_Output_category': {
-        'colour': '#4C97FF',
+     'operators_category': {
+        'colour': '#59C059',
         'css-icon':"fa fa-file"
      },
-     'Input_Output_category': {
-        'colour': '#4C97FF',
+     'control_category': {
+        'colour': '#FFBF00',
         'css-icon':"fa fa-file"
      },
-     'Input_Output_category': {
-        'colour': '#4C97FF',
+     'variable_category': {
+        'colour': '#FF8C1A',
         'css-icon':"fa fa-file"
      },
+     'procedure_category': {
+      'colour': '#FF6680',
+      'css-icon':"fa fa-file"
+   },
  }
 
 export const theme = Blockly.Theme.defineTheme('mytheme', {

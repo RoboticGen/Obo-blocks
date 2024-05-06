@@ -36,6 +36,24 @@ function makeUneditable(state) {
     { effects: editableCompartment.reconfigure(EditorView.editable.of(state)) }
   )
 }
+function saveAsPythonFile() {
+  // Get the content of the editor
+  const content = editor.state.doc.toString();
 
-// Example usage
-export { editor, insertPythonSnippet, makeUneditable };
+  // Create a Blob with the content
+  const blob = new Blob([content], { type: "text/plain" });
+
+  // Create a temporary anchor element
+  const anchor = document.createElement("a");
+  anchor.download = "script.py"; // Set the filename
+  anchor.href = URL.createObjectURL(blob);
+
+  // Simulate a click to trigger the download
+  anchor.click();
+
+  // Clean up
+  URL.revokeObjectURL(anchor.href);
+}
+
+
+export { editor, insertPythonSnippet, makeUneditable ,saveAsPythonFile };

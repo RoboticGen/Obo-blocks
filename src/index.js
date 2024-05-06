@@ -7,12 +7,9 @@ import '@fortawesome/fontawesome-free/js/brands'
 
 import oboBlocksLogo from './assets/obo_blocks.png'
 import academyLogo from './assets/academyLogo.png'
-// import clickmp3 from  './assets/click.mp3'
-// import deletemp3 from './assets/delete.mp3'
-// import  disconnectmp3 from './assets/disconnect.mp3'
-import spritespng from './assets/sprites.png'
 
-import { editor, insertPythonSnippet, makeUneditable } from './editor/editor'
+
+import { editor, insertPythonSnippet, makeUneditable ,saveAsPythonFile } from './editor/editor'
 
 
 import * as Blockly from 'blockly'
@@ -41,6 +38,7 @@ const copyButton = document.getElementById('copy-button');
 const runcodeButton = document.getElementById('run-button');
 const clearButton = document.getElementById('clear-button');
 const stopButton = document.getElementById('stop-button');
+const exportButton = document.getElementById('export-button');
 const notification = document.getElementById("notification");
 const notificationText = document.getElementById("notificationText");
 const runButtonText = document.getElementById('run-text');
@@ -82,7 +80,7 @@ const options = {
     'renderer': 'zelos',
 }
 
-const ws = Blockly.inject(blocklyDiv, options);
+let ws = Blockly.inject(blocklyDiv, options);
 
 // ----------------------- Function defintions --------------------------------
 async function runcode() {
@@ -127,6 +125,7 @@ editbutton.addEventListener('click', function () {
     editable = !editable
     makeUneditable(editable)
     if (editable) {
+        showNotification("Editing enabled");
         editbuttonText.innerHTML = 'Editing'
         save(ws)
         ws.dispose()
@@ -134,7 +133,11 @@ editbutton.addEventListener('click', function () {
     else
     {
         editbuttonText.innerHTML = 'Edit'
+        ws = Blockly.inject(blocklyDiv, options);
         load(ws)
+        const code = pythonGenerator.workspaceToCode(ws);
+        insertPythonSnippet(code)
+        showNotification("Editing disabled");
     }
 
 }
@@ -157,6 +160,11 @@ clearButton.addEventListener('click', () => {
 stopButton.addEventListener('click', () => {
     stopWorker()
 })
+
+exportButton.addEventListener('click', () => {
+    saveAsPythonFile();
+    showNotification("Code exported as script.py");
+});
 
 ws.addChangeListener((e) => {
     // Don't run the code when the workspace finishes loading; we're

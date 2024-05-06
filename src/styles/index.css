@@ -106,7 +106,7 @@
     justify-content: space-around;
     margin:0.2rem;
     padding: 0.3rem;
-    width: 4rem;
+    min-width: 4rem;
     height: 1.4rem;
     border-radius: 0.3rem;
     border: none;

@@ -1,5 +1,7 @@
 const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 
 
 module.exports = {
@@ -51,6 +53,11 @@ module.exports = {
                 template: 'src/templates/index.html',
             }
         ),
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: "src/assets/blockly_media", to: "media" } // Adjust source and destination paths as needed
+            ]
+        }),
     ]
 };
 
