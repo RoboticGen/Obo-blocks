@@ -1,5 +1,5 @@
 # Obo Blocks 
-![Obo Blocks](Frontend/Media/OBO_BLOCKS.png)
+![Obo Blocks](/src/assets/obo_blocks.png)
 
 **Scratch Blocks to Python Converter with Pydiode Evaluation**
 
@@ -44,7 +44,14 @@ Clone this repository using the following command:
 ```bash
 git clone https://github.com/yasanthaniroshan/Obo-blocks.git
 ```
-Serve [index.html](Frontend/index.html) using a local server.
+Install dependencies:
+```bash
+npm install
+```
+Serve the frontend using:
+```bash
+npm run dev
+```
 
 ## Usage
 
@@ -62,7 +69,7 @@ For detailed documentation, refer to the [docs](docs) directory.
 - [Blocky](https://developers.google.com/blockly)
 - [Python](https://www.python.org/)
 - [Pydiode](https://pyodide.org/en/stable/)
-- [Highlight.js](https://highlightjs.org/)
+- [Codemirror](https://codemirror.net/)
 
 
 ## Contributing
@@ -72,7 +79,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 ## License
 
 This project is under Roboticgen Academy. 
-![Roboticgen Academy](Frontend/Media/academyLogo.png)
+![Roboticgen Academy](./src/assets/academyLogo.png)
 
 ## Contributors
 

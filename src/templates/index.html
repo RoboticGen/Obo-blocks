@@ -3,22 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png"
-        href="https://lh3.googleusercontent.com/drive-viewer/AKGpihZaYFHls38j4U1uto020g4p_98zLpiEfj3mfmfxZxXdrbnOoB0k8AKFuAE2I7i5jBDl3vdbEmiyUYqbJh_RmlZ_ryMeyg=s2560">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <link rel="stylesheet" href="styles/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Obo Blocks</title>
 </head>
 
@@ -87,13 +71,16 @@
 
 
 <body>
+    <div id="notification" class="notification">
+        <span id="notificationText"></span>
+      </div>
     <div class="container">
         <nav class="nav-bar">
             <a href="">
-                <img src="Media/OBO_BLOCKS.png" class="obo-blocks-logo">
+                <img id="obo-blocks-logo" class="obo-blocks-logo">
             </a>
             <a href="https://roboticgenacademy.com/">
-                <img src="Media/academyLogo.png" alt="" class="logo">
+                <img id="roboticgen-academy-logo" alt="" class="logo">
             </a>
         </nav>
 
@@ -104,19 +91,15 @@
             <div class="button-row">
                 <p class="code-title">Python Code</p>
                 <div class="button-group">
-                    <!-- <a class="button" id="edit-button"><i class="fa fa-pencil"></i> <span id="run-text">Edit</span></a> -->
+                    <a class="button" id="edit-button"><i class="fa fa-pencil"></i> <span id="edit-text">Edit</span></a>
                     <a class="button" id="run-button"><i id="run-icon" class="fa fa-flag"></i> <span
                             id="run-text">Run</span></a>
                     <a class="button" id="copy-button"><i class="fa fa-copy"></i><span id="copy-text">Copy</span></a>
+                    <a class="button" id="export-button"><i class="fa fa-file-export" style="padding-right: 4px;"></i><span id="export-text">Export</span></a>
+
                 </div>
             </div>
-            <div class="code-snippet">
-                <textarea name="" id="output" cols="30" rows="10" hidden></textarea>
-                <pre>
-                    <code class="python" id = "pre-code">
-                </code>
-            </pre>
-
+            <div class="code-snippet" id="code-editor">
             </div>
         </div>
         <div class="output">
@@ -125,6 +108,8 @@
                 <div class="button-group">
                     <a class="button" id="clear-button"><i id="run-clear" class="fa fa-trash"></i> <span
                             id="run-text">Clear</span></a>
+                    <a class="button" id="stop-button"><i id="run-clear" class="fa fa-trash"></i> <span
+                            id="stop-text">Stop</span></a>
                 </div>
             </div>
             <div class="terminal-output-div">
@@ -133,11 +118,5 @@
         </div>
     </div>
 </body>
-<script src="https://cdn.jsdelivr.net/pyodide/v0.25.1/full/pyodide.js"></script>
-<script src="https://unpkg.com/blockly/blockly.min.js"></script>
-<script src="https://unpkg.com/blockly/python_compressed"></script>
-<script src="scripts/script.js"></script>
-<script src="Blocks/block_definitions.js"></script>
-<script src="Blocks/block_generations.js"></script>
 
 </html>
