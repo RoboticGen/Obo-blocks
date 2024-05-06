@@ -2,11 +2,9 @@ import './styles/index.css'
 
 import '@fortawesome/fontawesome-free/js/fontawesome'
 import '@fortawesome/fontawesome-free/js/solid'
-import '@fortawesome/fontawesome-free/js/regular'
-import '@fortawesome/fontawesome-free/js/brands'
 
-import oboBlocksLogo from './assets/obo_blocks.png'
-import academyLogo from './assets/academyLogo.png'
+import oboBlocksLogo from './assets/obo_blocks.webp'
+import academyLogo from './assets/academyLogo.webp'
 
 
 import { editor, insertPythonSnippet, makeUneditable, saveAsPythonFile } from './editor/editor'
