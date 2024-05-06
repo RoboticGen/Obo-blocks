@@ -59,7 +59,6 @@ self.onmessage = async function (event) {
         isready = true;
     }
     let command = event.data.command;
-    console.log(event.data);
     if (command === 'run') {
         let code = event.data.code;
         try {

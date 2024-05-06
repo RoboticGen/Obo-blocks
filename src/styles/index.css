@@ -125,7 +125,15 @@
 #copy-button:hover {
     background-color:#32AAC6;
 }
-
+#stop-button:hover {
+    background-color:#ef476f;
+}
+#export-button:hover {
+    background-color:#7c4a18;
+}
+#edit-button:hover {
+    background-color:#1a3a59ec;
+}
 .code-snippet {
     display: flex;
     flex-direction: column;
