@@ -1,6 +1,7 @@
 const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 
 
@@ -18,6 +19,11 @@ module.exports = {
         clean: true,
         assetModuleFilename: '[name][ext]',
     },
+    optimization: {
+        splitChunks: {
+          chunks: 'all',
+        },
+      },
     devtool: 'source-map',
     devServer: {
         static:
@@ -38,7 +44,7 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    'style-loader',
+                    MiniCssExtractPlugin.loader,
                     'css-loader',
                 ],
             },
@@ -54,12 +60,16 @@ module.exports = {
                 filename: "index.html",
                 template: 'src/templates/index.html',
                 favicon: "./src/assets/favicon.ico",
+                inject: 'body',
             }
         ),
         new CopyWebpackPlugin({
             patterns: [
                 { from: "src/assets/blockly_media", to: "media" } // Adjust source and destination paths as needed
             ]
+        }),
+        new MiniCssExtractPlugin({
+            filename: '[name][contenthash].css',
         }),
     ]
 };

@@ -7,7 +7,7 @@ import oboBlocksLogo from './assets/obo_blocks.webp'
 import academyLogo from './assets/academyLogo.webp'
 
 
-import { editor, insertPythonSnippet, makeUneditable, saveAsPythonFile } from './editor/editor'
+import { editor, insertPythonSnippet, makeUneditable, saveAsPythonFile, loadModifiedCode, saveModifideCode } from './editor/editor'
 
 
 import * as Blockly from 'blockly'
@@ -24,6 +24,7 @@ import { worker, terminal, stopWorker } from './pyodide/loader'
 
 
 let editable = false;
+let ws;
 
 // ------------------ Elements -------------------------
 
@@ -78,8 +79,6 @@ const options = {
     'renderer': 'zelos',
 }
 
-let ws = Blockly.inject(blocklyDiv, options);
-
 // ----------------------- Function defintions --------------------------------
 async function runcode() {
     try {
@@ -116,34 +115,42 @@ function showNotification(message) {
     }, 1500);
 }
 
+function initBlokly(workspace) {
+    workspace = Blockly.inject(blocklyDiv, options);
+    workspace.addChangeListener((e) => {
+        if (e.isUiEvent || e.type == Blockly.Events.FINISHED_LOADING ||
+            workspace.isDragging()) {
+            return;
+        }
+        save(workspace)
+        const code = pythonGenerator.workspaceToCode(workspace);
+        insertPythonSnippet(code)
+    });
+    return workspace
+
+}
+// ------------------------ Initializations -----------------------------------------------------------
+
+ws = initBlokly(ws)
 
 // ------------------------ Event Listners -----------------------------------------------------------
 
 editbutton.addEventListener('click', function () {
     editable = !editable
     makeUneditable(editable)
+
     if (editable) {
         showNotification("Editing enabled");
         editbuttonText.innerHTML = 'Editing'
         save(ws)
+        loadModifiedCode()
         ws.dispose()
     }
     else {
         editbuttonText.innerHTML = 'Edit'
-        ws = Blockly.inject(blocklyDiv, options);
+        saveModifideCode()
+        ws = initBlokly(ws)
         load(ws)
-        ws.addChangeListener((e) => {
-            // Don't run the code when the workspace finishes loading; we're
-            // already running it once when the application starts.
-            // Don't run the code during drags; we might have invalid state.
-            if (e.isUiEvent || e.type == Blockly.Events.FINISHED_LOADING ||
-                ws.isDragging()) {
-                return;
-            }
-            save(ws)
-            const code = pythonGenerator.workspaceToCode(ws);
-            insertPythonSnippet(code)
-        });
         const code = pythonGenerator.workspaceToCode(ws);
         insertPythonSnippet(code)
         showNotification("Editing disabled");
@@ -152,7 +159,11 @@ editbutton.addEventListener('click', function () {
 }
 )
 copyButton.addEventListener('click', () => {
-    let code = editor.state.doc.toString();;
+    let code = editor.state.doc.toString();
+    if (code === '') {
+        showNotification("No code to copy");
+        return;
+    }
     copyTextToClipboard(code);
     showNotification("Code copied to clipboard");
 });
@@ -171,21 +182,13 @@ stopButton.addEventListener('click', () => {
 })
 
 exportButton.addEventListener('click', () => {
-    saveAsPythonFile();
-    showNotification("Code exported as script.py");
-});
-
-ws.addChangeListener((e) => {
-    // Don't run the code when the workspace finishes loading; we're
-    // already running it once when the application starts.
-    // Don't run the code during drags; we might have invalid state.
-    if (e.isUiEvent || e.type == Blockly.Events.FINISHED_LOADING ||
-        ws.isDragging()) {
+    const content = editor.state.doc.toString();
+    if (content === '') {
+        showNotification("No code to export");
         return;
     }
-    save(ws)
-    const code = pythonGenerator.workspaceToCode(ws);
-    insertPythonSnippet(code)
+    saveAsPythonFile(content);
+    showNotification("Code exported as script.py");
 });
 
 document.addEventListener('DOMContentLoaded', () => {

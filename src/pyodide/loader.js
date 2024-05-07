@@ -11,7 +11,6 @@ function startWorker() {
         let responce = event.data.responce
         if (responce === 'result') {
             terminal.innerHTML += event.data.result + '\n>>> ';
-            console.log(event.data.result)
         } else if (responce === 'request') {
            let responce = prompt('Enter the input');
             worker.postMessage({ command: 'input', code: responce });
