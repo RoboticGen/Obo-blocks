@@ -65,7 +65,8 @@ module.exports = {
         ),
         new CopyWebpackPlugin({
             patterns: [
-                { from: "src/assets/blockly_media", to: "media" } // Adjust source and destination paths as needed
+                { from: "src/assets/blockly_media", to: "media" }, // Adjust source and destination paths as needed
+                { from: "src/SEO", to: ""}
             ]
         }),
         new MiniCssExtractPlugin({
