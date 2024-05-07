@@ -9,6 +9,7 @@ module.exports = {
     mode: 'development',
     entry:
     {
+        css: path.resolve(__dirname, 'src/styles/index.css'),
         bundle: path.resolve(__dirname, 'src/index.js'),
     
     },
