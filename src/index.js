@@ -10,12 +10,12 @@ import academyLogo from './assets/academyLogo.webp'
 import { editor, insertPythonSnippet, makeUneditable, saveAsPythonFile, loadModifiedCode, saveModifideCode } from './editor/editor'
 
 
-import * as Blockly from 'blockly'
+import * as Blockly from 'blockly/core'
 import { toolbox } from './blocky/toolbox';
+import { forBlock  } from './blocky/generator';
 import { pythonGenerator } from 'blockly/python';
-import { forBlock } from './blocky/generator';
 import { blocks } from './blocky/blocks';
-import { OboCategory } from './blocky/categories';
+import { OboCategory } from './blocky/categories';  
 import { theme } from './blocky/themes';
 import { save, load } from './blocky/serialization'
 
