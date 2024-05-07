@@ -12,7 +12,8 @@ import { editor, insertPythonSnippet, makeUneditable, saveAsPythonFile, loadModi
 
 import * as Blockly from 'blockly/core'
 import { toolbox } from './blocky/toolbox';
-import { forBlock , pythonGenerator } from './blocky/generator';
+import { forBlock  } from './blocky/generator';
+import { pythonGenerator } from 'blockly/python';
 import { blocks } from './blocky/blocks';
 import { OboCategory } from './blocky/categories';  
 import { theme } from './blocky/themes';

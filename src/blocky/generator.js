@@ -5,20 +5,12 @@
  */
 
 import { Order } from 'blockly/python';
-import { Generator } from 'blockly';
 
 // Export all the code generators for our custom blocks,
 // but don't register them with Blockly yet.
 // This file has no side effects!
 export const forBlock = Object.create(null);
 
-class PythonGenerator extends Generator {
-    constructor() {
-        super('Python');
-    }
-}
-
-export const pythonGenerator = new PythonGenerator();
 
 
 forBlock['print_block'] = function (block, generator) {
