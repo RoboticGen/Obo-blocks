@@ -9,25 +9,9 @@
         content="Obo Blocks,python,google,scratch,Blockly,visual programming,pyodide,web application,roboticgen academy,roboticgen">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="msvalidate.01" content="F880277201EB0168D24B534ADC14C549" />
+    <link rel="preload" as="image" href="academyLogo.webp" />
+    <link rel="preload" as="image" href="obo_blocks.webp" />
     <title>Obo Blocks</title>
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TQ59G8QBC7"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-TQ59G8QBC7');
-    </script>
-    <!-- Clarity tag  -->
-    <script type="text/javascript">
-        (function (c, l, a, r, i, t, y) {
-            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
-            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
-            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
-        })(window, document, "clarity", "script", "m86gvlhvgc");
-    </script>
 </head>
 
 <body>
@@ -36,10 +20,10 @@
     </div>
     <div class="container">
         <nav class="nav-bar">
-            <img id="obo-blocks-logo" class="obo-blocks-logo" alt="Obo Blocks Logo">
+            <img id="obo-blocks-logo" class="obo-blocks-logo" alt="Obo Blocks Logo" src="obo_blocks.webp">
 
             <a href="https://roboticgenacademy.com/" aria-label="Roboticgen Academy">
-                <img id="roboticgen-academy-logo" alt="Roboticgen Academy Logo" class="logo">
+                <img id="roboticgen-academy-logo" alt="Roboticgen Academy Logo" class="logo" src="academyLogo.webp">
             </a>
         </nav>
 
@@ -65,7 +49,7 @@
         </div>
         <div class="output">
             <div class="button-row">
-                <p class="output-title">Output</p>
+                <label for="terminal-output" class="output-title">Output</label>
                 <div class="button-group">
                     <a class="button" id="clear-button"><i id="run-clear" class="fa fa-trash"></i> <span
                             id="run-text">Clear</span></a>
@@ -74,11 +58,27 @@
                 </div>
             </div>
             <div class="terminal-output-div">
-                <label for="terminal-output"></label>
                 <textarea id="terminal-output" class="terminal-output" rows="10" readonly></textarea>
             </div>
         </div>
     </div>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TQ59G8QBC7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-TQ59G8QBC7');
+    </script>
+    <!-- Clarity tag  -->
+    <script type="text/javascript">
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "m86gvlhvgc");
+    </script>
 </body>
 <script type="application/ld+json">
     {
@@ -108,4 +108,5 @@
         "url": "https://oboblocks.roboticgenacademy.com/"
       }
 </script>
+
 </html>

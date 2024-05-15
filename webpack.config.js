@@ -9,7 +9,6 @@ module.exports = {
     mode: 'development',
     entry:
     {
-        img_loader: path.resolve(__dirname, 'src/loader.js'),
         bundle: path.resolve(__dirname, 'src/index.js'),
     },
     output: {
@@ -65,7 +64,9 @@ module.exports = {
         new CopyWebpackPlugin({
             patterns: [
                 { from: "src/assets/blockly_media", to: "media" }, // Adjust source and destination paths as needed
-                { from: "src/SEO", to: ""}
+                { from: "src/SEO", to: ""},
+                { from: "src/assets/academyLogo.webp", to: ""},
+                { from: "src/assets/obo_blocks.webp", to: ""},
             ]
         }),
         new MiniCssExtractPlugin({
