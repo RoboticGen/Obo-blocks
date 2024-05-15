@@ -4,7 +4,7 @@ let worker;
 function startWorker() {
     worker = new Worker(new URL('./worker.js', import.meta.url))
     worker.onerror = function (event) {
-        console.error('Worker error: ', event.message, event.filename, event.lineno);
+        alert("Error occured !" + event.message)
     };
 
     worker.onmessage = function (event) {
@@ -12,8 +12,11 @@ function startWorker() {
         if (responce === 'result') {
             terminal.innerHTML += event.data.result + '\n>>> ';
         } else if (responce === 'request') {
-           let responce = prompt('Enter the input');
+            let responce = prompt('Enter the input');
             worker.postMessage({ command: 'input', code: responce });
+        }
+        else if (responce === 'error') {
+            alert("Error happened ! : " + event.data.error)
         }
     };
 }

@@ -14,7 +14,7 @@ if ('undefined' === typeof window) {
 async function initPyodide() {
     pyodide = await loadPyodide({ indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.25.0/full/' });
     pyodide.setStdout({ batched: (x) => stdoutHandler(x) });
-    pyodide.setStdin({ stdin: () => stdinHandler() });
+    pyodide.setStdin({ error: true });
 }
 
 initPyodide().then(() => {
@@ -42,8 +42,6 @@ function stdinHandler() {
 }
 
 
-
-
 function codeRunner(code) {
     if (!isready) {
         initPyodide();
@@ -52,6 +50,7 @@ function codeRunner(code) {
     pyodide.runPython(code);
     return
 }
+
 
 self.onmessage = async function (event) {
     if (!isready) {
@@ -65,7 +64,7 @@ self.onmessage = async function (event) {
             codeRunner(code);
             return;
         } catch (err) {
-            console.error('Error running code:', err);
+            self.postMessage({ response: "error", error: err.message });
         }
     }
     else if (command === 'input') {

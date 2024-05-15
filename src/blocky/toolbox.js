@@ -24,10 +24,10 @@ export const toolbox = {
             'kind': 'block',
             'type': 'print_block',
           },
-          {
-            'kind': 'block',
-            'type': 'input_block',
-          },
+          // {
+          //   'kind': 'block',
+          //   'type': 'input_block',
+          // },
         ],
       },
       {
