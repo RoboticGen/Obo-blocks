@@ -3,10 +3,6 @@ import './styles/index.css'
 import '@fortawesome/fontawesome-free/js/fontawesome'
 import '@fortawesome/fontawesome-free/js/solid'
 
-import oboBlocksLogo from './assets/obo_blocks.webp'
-import academyLogo from './assets/academyLogo.webp'
-
-
 import { editor, insertPythonSnippet, makeUneditable, saveAsPythonFile, loadModifiedCode, saveModifideCode } from './editor/editor'
 
 
@@ -28,8 +24,7 @@ let ws;
 
 // ------------------ Elements -------------------------
 
-const obo_blocks_logo = document.getElementById("obo-blocks-logo")
-const academy_logo = document.getElementById("roboticgen-academy-logo")
+
 const editbutton = document.getElementById("edit-button")
 // const codeDiv = document.getElementById('generatedCode').firstChild;
 const blocklyDiv = document.getElementById('editor');
@@ -46,8 +41,8 @@ const editbuttonText = document.getElementById('edit-text');
 
 
 // ------------------- Event Listners -----------------------------
-obo_blocks_logo.src = oboBlocksLogo
-academy_logo.src = academyLogo
+// obo_blocks_logo.src = oboBlocksLogo
+// academy_logo.src = academyLogo
 // ------------------- Blockly Configuration -------------------------
 
 Blockly.common.defineBlocks(blocks);
