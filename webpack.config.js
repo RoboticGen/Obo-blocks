@@ -9,6 +9,7 @@ module.exports = {
     mode: 'development',
     entry:
     {
+        img_loader: path.resolve(__dirname, 'src/loader.js'),
         bundle: path.resolve(__dirname, 'src/index.js'),
     },
     output: {
