@@ -1,4 +1,6 @@
 import { EditorView, basicSetup } from "codemirror"
+import { keymap } from "@codemirror/view";
+import {indentWithTab} from "@codemirror/commands"
 import { EditorState, Compartment } from "@codemirror/state";
 import { python } from "@codemirror/lang-python";
 
@@ -11,16 +13,19 @@ const state = EditorState.create({
   doc: "", // Set initial content here
   extensions: [
     basicSetup,
+    keymap.of([indentWithTab]),
     python(),
     editableCompartment.of(EditorView.editable.of(false))
   ],
 });
+
 
 // Create the editor view
 let editor = new EditorView({
   state,
   parent: document.getElementById("code-editor"),
 });
+
 
 
 // Function to insert Python code snippet into the editor

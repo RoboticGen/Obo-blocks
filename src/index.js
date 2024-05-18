@@ -1,44 +1,47 @@
-import './styles/index.css'
+import "./styles/index.css";
 
-import '@fortawesome/fontawesome-free/js/fontawesome'
-import '@fortawesome/fontawesome-free/js/solid'
+import "@fortawesome/fontawesome-free/js/fontawesome";
+import "@fortawesome/fontawesome-free/js/solid";
 
-import { editor, insertPythonSnippet, makeUneditable, saveAsPythonFile, loadModifiedCode, saveModifideCode } from './editor/editor'
+import {
+  editor,
+  insertPythonSnippet,
+  makeUneditable,
+  saveAsPythonFile,
+  loadModifiedCode,
+  saveModifideCode,
+} from "./editor/editor";
 
+import * as Blockly from "blockly/core";
+import { toolbox } from "./blocky/toolbox";
+import { forBlock } from "./blocky/generator";
+import { pythonGenerator } from "blockly/python";
+import { blocks } from "./blocky/blocks";
+import { OboCategory } from "./blocky/categories";
+import { theme } from "./blocky/themes";
+import { save, load } from "./blocky/serialization";
 
-import * as Blockly from 'blockly/core'
-import { toolbox } from './blocky/toolbox';
-import { forBlock  } from './blocky/generator';
-import { pythonGenerator } from 'blockly/python';
-import { blocks } from './blocky/blocks';
-import { OboCategory } from './blocky/categories';  
-import { theme } from './blocky/themes';
-import { save, load } from './blocky/serialization'
-
-import { worker, terminal, stopWorker } from './pyodide/loader'
-
-
+import { worker, terminal, stopWorker } from "./pyodide/loader";
 
 let editable = false;
 let ws;
 
 // ------------------ Elements -------------------------
 
-
-const editbutton = document.getElementById("edit-button")
+const editbutton = document.getElementById("edit-button");
 // const codeDiv = document.getElementById('generatedCode').firstChild;
-const blocklyDiv = document.getElementById('editor');
-const copyButton = document.getElementById('copy-button');
-const runcodeButton = document.getElementById('run-button');
-const clearButton = document.getElementById('clear-button');
-const stopButton = document.getElementById('stop-button');
-const exportButton = document.getElementById('export-button');
+const blocklyDiv = document.getElementById("editor");
+const copyButton = document.getElementById("copy-button");
+const runcodeButton = document.getElementById("run-button");
+const clearButton = document.getElementById("clear-button");
+const stopButton = document.getElementById("stop-button");
+const exportButton = document.getElementById("export-button");
 const notification = document.getElementById("notification");
 const notificationText = document.getElementById("notificationText");
-const runButtonText = document.getElementById('run-text');
-const editbuttonText = document.getElementById('edit-text');
-
-
+const runButtonText = document.getElementById("run-text");
+const editbuttonText = document.getElementById("edit-text");
+const codeDiv = document.getElementById("code");
+const outputDiv = document.getElementById("output");
 
 // ------------------- Event Listners -----------------------------
 // obo_blocks_logo.src = oboBlocksLogo
@@ -49,146 +52,170 @@ Blockly.common.defineBlocks(blocks);
 Object.assign(pythonGenerator.forBlock, forBlock);
 
 Blockly.registry.register(
-    Blockly.registry.Type.TOOLBOX_ITEM,
-    Blockly.ToolboxCategory.registrationName,
-    OboCategory, true);
-
+  Blockly.registry.Type.TOOLBOX_ITEM,
+  Blockly.ToolboxCategory.registrationName,
+  OboCategory,
+  true
+);
 
 const options = {
-    'toolbox': toolbox,
-    'theme': theme,
-    media: 'media',
-    grid: {
-        spacing: 20,
-        length: 1,
-        colour: '#888',
-        snap: false
-    },
-    zoom: {
-        controls: true,
-        startScale: 1,
-        maxScale: 1.5,
-        minScale: 0.7,
-        scaleSpeed: 1.2
-    },
-    'renderer': 'zelos',
-}
+  toolbox: toolbox,
+  theme: theme,
+  media: "media",
+  grid: {
+    spacing: 20,
+    length: 1,
+    colour: "#888",
+    snap: false,
+  },
+  zoom: {
+    controls: true,
+    startScale: 1,
+    maxScale: 1.5,
+    minScale: 0.7,
+    scaleSpeed: 1.2,
+  },
+  renderer: "zelos",
+};
 
 // ----------------------- Function defintions --------------------------------
 async function runcode() {
-    try {
-        runcodeButton.setAttribute('disabled', true);
-        runButtonText.innerHTML = 'Running';
-        let code = editor.state.doc.toString();
-        worker.postMessage({ code: code, command: 'run' });
-        runcodeButton.removeAttribute('disabled');
-        runButtonText.innerHTML = 'Run';
-    } catch (err) {
-        console.error('Error running code:', err);
-    }
+  try {
+    runcodeButton.setAttribute("disabled", true);
+    runButtonText.innerHTML = "Running";
+    let code = editor.state.doc.toString();
+    worker.postMessage({ code: code, command: "run" });
+    runcodeButton.removeAttribute("disabled");
+    runButtonText.innerHTML = "Run";
+  } catch (err) {
+    console.error("Error running code:", err);
+  }
 }
 
 async function copyTextToClipboard(textToCopy) {
-    try {
-        if (navigator?.clipboard?.writeText) {
-            await navigator.clipboard.writeText(textToCopy);
-        }
-    } catch (err) {
-        console.error('Error copying text to clipboard:', err);
+  try {
+    if (navigator?.clipboard?.writeText) {
+      await navigator.clipboard.writeText(textToCopy);
     }
+  } catch (err) {
+    console.error("Error copying text to clipboard:", err);
+  }
 }
 
 function showNotification(message) {
-    notificationText.innerText = message;
+  notificationText.innerText = message;
 
-    // Show the notification
-    notification.classList.add("show");
+  // Show the notification
+  notification.classList.add("show");
 
-    // Hide the notification after 2 seconds
-    setTimeout(function () {
-        notification.classList.remove("show");
-    }, 1500);
+  // Hide the notification after 2 seconds
+  setTimeout(function () {
+    notification.classList.remove("show");
+  }, 1500);
 }
 
 function initBlokly(workspace) {
-    workspace = Blockly.inject(blocklyDiv, options);
-    workspace.addChangeListener((e) => {
-        if (e.isUiEvent || e.type == Blockly.Events.FINISHED_LOADING ||
-            workspace.isDragging()) {
-            return;
-        }
-        save(workspace)
-        const code = pythonGenerator.workspaceToCode(workspace);
-        insertPythonSnippet(code)
-    });
-    return workspace
+  workspace = Blockly.inject(blocklyDiv, options);
+  workspace.addChangeListener((e) => {
+    if (
+      e.isUiEvent ||
+      e.type == Blockly.Events.FINISHED_LOADING ||
+      workspace.isDragging()
+    ) {
+      return;
+    }
+    save(workspace);
+    const code = pythonGenerator.workspaceToCode(workspace);
+    insertPythonSnippet(code);
+  });
+  return workspace;
+}
 
+
+let totalSizeWindowSizw = parseInt(codeDiv.getBoundingClientRect().height.toFixed(0)) + parseInt(outputDiv.getBoundingClientRect().height.toFixed(0));
+let oldcodeSize = codeDiv.getBoundingClientRect().height.toFixed(0);
+let newoutputSize = outputDiv.getBoundingClientRect().height.toFixed(0);
+
+
+function resizeRightColumn() {
+  let newcodeSize = codeDiv.getBoundingClientRect().height.toFixed(0);
+  if ((newcodeSize < 500 && newcodeSize > 300 )&& newcodeSize < totalSizeWindowSizw) {
+    let outputSize = totalSizeWindowSizw - newcodeSize; // Replace codeSize with newcodeSize
+    console.log("Output Size: ", totalSizeWindowSizw);
+    outputDiv.style.height = outputSize + "px";
+    oldcodeSize = newcodeSize;
+  }
+}
+
+if ("ResizeObserver" in window) {
+  // Create a new ResizeObserver
+  const resizeObserver = new ResizeObserver(resizeRightColumn);
+  // Start observing the element
+  resizeObserver.observe(codeDiv);
+} else {
+  console.log("Resize Observer not supported in this browser.");
 }
 // ------------------------ Initializations -----------------------------------------------------------
 
-ws = initBlokly(ws)
+ws = initBlokly(ws);
 
 // ------------------------ Event Listners -----------------------------------------------------------
 
-editbutton.addEventListener('click', function () {
-    editable = !editable
-    makeUneditable(editable)
+editbutton.addEventListener("click", function () {
+  editable = !editable;
+  makeUneditable(editable);
 
-    if (editable) {
-        showNotification("Editing enabled");
-        editbuttonText.innerHTML = 'Editing'
-        save(ws)
-        loadModifiedCode()
-        ws.dispose()
-    }
-    else {
-        editbuttonText.innerHTML = 'Edit'
-        saveModifideCode()
-        ws = initBlokly(ws)
-        load(ws)
-        const code = pythonGenerator.workspaceToCode(ws);
-        insertPythonSnippet(code)
-        showNotification("Editing disabled");
-    }
-
-}
-)
-copyButton.addEventListener('click', () => {
-    let code = editor.state.doc.toString();
-    if (code === '') {
-        showNotification("No code to copy");
-        return;
-    }
-    copyTextToClipboard(code);
-    showNotification("Code copied to clipboard");
+  if (editable) {
+    showNotification("Editing enabled");
+    editbuttonText.innerHTML = "Editing";
+    save(ws);
+    loadModifiedCode();
+    ws.dispose();
+  } else {
+    editbuttonText.innerHTML = "Edit";
+    saveModifideCode();
+    ws = initBlokly(ws);
+    load(ws);
+    const code = pythonGenerator.workspaceToCode(ws);
+    insertPythonSnippet(code);
+    showNotification("Editing disabled");
+  }
+});
+copyButton.addEventListener("click", () => {
+  let code = editor.state.doc.toString();
+  if (code === "") {
+    showNotification("No code to copy");
+    return;
+  }
+  copyTextToClipboard(code);
+  showNotification("Code copied to clipboard");
 });
 
-runcodeButton.addEventListener('click', () => {
-    runcode();
+runcodeButton.addEventListener("click", () => {
+  runcode();
 });
 
-clearButton.addEventListener('click', () => {
-    terminal.innerHTML = 'Python 3.10 \n>>> ';
-    showNotification("Terminal cleared");
+clearButton.addEventListener("click", () => {
+  terminal.innerHTML = "Python 3.10 \n>>> ";
+  showNotification("Terminal cleared");
 });
 
-stopButton.addEventListener('click', () => {
-    stopWorker()
-})
-
-exportButton.addEventListener('click', () => {
-    const content = editor.state.doc.toString();
-    if (content === '') {
-        showNotification("No code to export");
-        return;
-    }
-    saveAsPythonFile(content);
-    showNotification("Code exported as script.py");
+stopButton.addEventListener("click", () => {
+  stopWorker();
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    makeUneditable(editable)
-    notification.style.transition = "opacity 0.5s ease-in-out"
-    ws.resize();
-}
-);
+exportButton.addEventListener("click", () => {
+  const content = editor.state.doc.toString();
+  if (content === "") {
+    showNotification("No code to export");
+    return;
+  }
+  saveAsPythonFile(content);
+  showNotification("Code exported as script.py");
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  makeUneditable(editable);
+  notification.style.transition = "opacity 0.5s ease-in-out";
+  ws.resize();
+});
