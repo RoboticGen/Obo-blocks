@@ -65,6 +65,25 @@
   height: 99%;
   width: 99%;
 }
+.editing-image
+{
+  height: 50%;
+  opacity: 0;
+  transition: 
+  height 0.5s,
+  opacity 1.5s;
+}
+.editing-image:active
+{
+  height: 70%;
+  opacity: 1;
+}
+.editing-image:hover
+{
+  height: 70;
+  opacity: 1;
+}
+
 
 .code {
   grid-area: code;
@@ -209,6 +228,19 @@ div:nth-of-type(2)::-webkit-resizer {
     "navBar navBar navBar navBar"
     "editor editor editor code"
     "editor editor editor output";
+  grid-gap: 0.5rem;
+  height: calc(100vh - 0.5rem);
+}
+.container-editing {
+  display: grid;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  grid-template-rows: 1fr 8fr 3fr;
+  grid-template-areas:
+    "navBar navBar navBar navBar"
+    "code code code code"
+    "output output output output";
   grid-gap: 0.5rem;
   height: calc(100vh - 0.5rem);
 }

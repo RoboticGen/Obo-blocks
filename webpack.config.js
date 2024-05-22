@@ -67,6 +67,7 @@ module.exports = {
                 { from: "src/SEO", to: ""},
                 { from: "src/assets/academyLogo.webp", to: ""},
                 { from: "src/assets/obo_blocks.webp", to: ""},
+                { from: "src/assets/editing.gif",to: "" },
             ]
         }),
         new MiniCssExtractPlugin({

@@ -31,6 +31,7 @@ let ws;
 const editbutton = document.getElementById("edit-button");
 // const codeDiv = document.getElementById('generatedCode').firstChild;
 const blocklyDiv = document.getElementById("editor");
+const imageEDit = document.getElementById("editing-image");
 const copyButton = document.getElementById("copy-button");
 const runcodeButton = document.getElementById("run-button");
 const clearButton = document.getElementById("clear-button");
@@ -137,6 +138,7 @@ let oldcodeSize = codeDiv.getBoundingClientRect().height.toFixed(0);
 let newoutputSize = outputDiv.getBoundingClientRect().height.toFixed(0);
 
 
+
 function resizeRightColumn() {
   let newcodeSize = codeDiv.getBoundingClientRect().height.toFixed(0);
   if ((newcodeSize < 500 && newcodeSize > 300 )&& newcodeSize < totalSizeWindowSizw) {
@@ -171,8 +173,13 @@ editbutton.addEventListener("click", function () {
     save(ws);
     loadModifiedCode();
     ws.dispose();
+    blocklyDiv.style.display = "none";
+    imageEDit.style.display = "block";
+
   } else {
     editbuttonText.innerHTML = "Edit";
+    blocklyDiv.style.display = "block";
+    imageEDit.style.display = "none";
     saveModifideCode();
     ws = initBlokly(ws);
     load(ws);

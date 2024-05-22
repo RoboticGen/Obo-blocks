@@ -16,7 +16,10 @@ function startWorker() {
             worker.postMessage({ command: 'input', code: responce });
         }
         else if (responce === 'error') {
-            alert("Error happened ! : " + event.data.error)
+            alert("Something happened ! - " + event.data.error)
+        }
+        else {
+            console.log(event.data)
         }
     };
 }
