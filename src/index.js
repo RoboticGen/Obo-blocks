@@ -10,6 +10,7 @@ import {
   saveAsPythonFile,
   loadModifiedCode,
   saveModifideCode,
+  saveAsJsonFile,
 } from "./editor/editor";
 
 import * as Blockly from "blockly/core";
@@ -19,7 +20,7 @@ import { pythonGenerator } from "blockly/python";
 import { blocks } from "./blocky/blocks";
 import { OboCategory } from "./blocky/categories";
 import { theme } from "./blocky/themes";
-import { save, load } from "./blocky/serialization";
+import { save, load, exportJson, importJson } from "./blocky/serialization";
 
 import { worker, terminal, stopWorker } from "./pyodide/loader";
 
@@ -37,6 +38,8 @@ const runcodeButton = document.getElementById("run-button");
 const clearButton = document.getElementById("clear-button");
 const stopButton = document.getElementById("stop-button");
 const exportButton = document.getElementById("export-button");
+const importJsonButton = document.getElementById("import-json-button");
+const exportJsonButton = document.getElementById("export-json-button");
 const notification = document.getElementById("notification");
 const notificationText = document.getElementById("notificationText");
 const runButtonText = document.getElementById("run-text");
@@ -132,16 +135,19 @@ function initBlokly(workspace) {
   return workspace;
 }
 
-
-let totalSizeWindowSizw = parseInt(codeDiv.getBoundingClientRect().height.toFixed(0)) + parseInt(outputDiv.getBoundingClientRect().height.toFixed(0));
+let totalSizeWindowSizw =
+  parseInt(codeDiv.getBoundingClientRect().height.toFixed(0)) +
+  parseInt(outputDiv.getBoundingClientRect().height.toFixed(0));
 let oldcodeSize = codeDiv.getBoundingClientRect().height.toFixed(0);
 let newoutputSize = outputDiv.getBoundingClientRect().height.toFixed(0);
 
-
-
 function resizeRightColumn() {
   let newcodeSize = codeDiv.getBoundingClientRect().height.toFixed(0);
-  if ((newcodeSize < 500 && newcodeSize > 300 )&& newcodeSize < totalSizeWindowSizw) {
+  if (
+    newcodeSize < 500 &&
+    newcodeSize > 300 &&
+    newcodeSize < totalSizeWindowSizw
+  ) {
     let outputSize = totalSizeWindowSizw - newcodeSize; // Replace codeSize with newcodeSize
     console.log("Output Size: ", totalSizeWindowSizw);
     outputDiv.style.height = outputSize + "px";
@@ -175,7 +181,6 @@ editbutton.addEventListener("click", function () {
     ws.dispose();
     blocklyDiv.style.display = "none";
     imageEDit.style.display = "block";
-
   } else {
     editbuttonText.innerHTML = "Edit";
     blocklyDiv.style.display = "block";
@@ -219,6 +224,42 @@ exportButton.addEventListener("click", () => {
   }
   saveAsPythonFile(content);
   showNotification("Code exported as script.py");
+});
+
+importJsonButton.addEventListener("click", () => {
+  let inputElement = document.createElement("input");
+  inputElement.type = "file";
+  inputElement.accept = ".json";
+  inputElement.click();
+  inputElement.addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const json = JSON.parse(e.target.result);
+      try {
+        let imported = importJson(ws, json);
+        if (imported) {
+          showNotification("Workspace imported");
+          const code = pythonGenerator.workspaceToCode(ws);
+          insertPythonSnippet(code);
+        } else {
+          showNotification("Error importing JSON");
+        }
+      } catch (err) {
+        console.error("Error importing JSON:", err);
+        showNotification("Error importing JSON");
+      }
+    };
+    reader.readAsText(file);
+  });
+
+  inputElement.remove();
+});
+
+exportJsonButton.addEventListener("click", () => {
+  const json = exportJson(ws);
+  saveAsJsonFile(JSON.stringify(json));
+  showNotification("Workspace exported as workspace.json");
 });
 
 document.addEventListener("DOMContentLoaded", () => {
