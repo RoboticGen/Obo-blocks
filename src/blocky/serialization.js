@@ -30,3 +30,22 @@ export const load = function(workspace) {
   Blockly.serialization.workspaces.load(JSON.parse(data), workspace, false);
   Blockly.Events.enable();
 };
+
+export const exportJson = function(workspace) {
+  return Blockly.serialization.workspaces.save(workspace);
+}
+
+export const importJson = function(workspace, json) {
+  try {
+    Blockly.Events.disable();
+    Blockly.serialization.workspaces.load(json, workspace, false);
+    Blockly.Events.enable();
+    return true;
+  }
+  catch (err) {
+    console.error('Error importing JSON:', err);
+    return false;
+  }
+  
+  
+}
