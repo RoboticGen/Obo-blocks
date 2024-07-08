@@ -484,4 +484,19 @@ Blockly.Blocks['int_str_conv_block'] = {
  this.setHelpUrl("");
   }
 };
+
+Blockly.Blocks['time_sleep'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Sleep")
+        .appendField(new Blockly.FieldNumber(0, 0), "time")
+        .appendField("Seconds");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(45);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
 export const blocks = Blockly.Blocks;

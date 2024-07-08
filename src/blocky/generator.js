@@ -230,3 +230,12 @@ forBlock['int_str_conv_block'] = function (block, generator) {
     var code = 'str(' + value_input + ')';
     return [code,  Order.ATOMIC];
 }
+
+forBlock['time_sleep'] = function(block, generator) {
+    if (!generator.definitions_['import_time']) {
+        generator.definitions_['import_time'] = 'import time';
+      }
+    var number_time = block.getFieldValue('time');
+    var code = 'time.sleep(' + number_time + ')\n';
+    return code;
+  };

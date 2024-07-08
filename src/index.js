@@ -55,6 +55,24 @@ const outputDiv = document.getElementById("output");
 Blockly.common.defineBlocks(blocks);
 Object.assign(pythonGenerator.forBlock, forBlock);
 
+pythonGenerator.addReservedWords('time');
+pythonGenerator.init = function(workspace) {
+  // Initialize definitions if they don't exist
+  if (!pythonGenerator.definitions_) {
+    pythonGenerator.definitions_ = {};
+  }
+};
+
+pythonGenerator.finish = function(code) {
+  // Convert the definitions dictionary to a list
+  var imports = [];
+  for (var name in pythonGenerator.definitions_) {
+    imports.push(pythonGenerator.definitions_[name]);
+  }
+  // Join the imports with the code
+  return imports.join('\n') + '\n' + code;
+};
+
 Blockly.registry.register(
   Blockly.registry.Type.TOOLBOX_ITEM,
   Blockly.ToolboxCategory.registrationName,

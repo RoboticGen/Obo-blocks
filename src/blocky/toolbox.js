@@ -170,6 +170,21 @@ export const toolbox = {
         'categorystyle': 'procedure_category',
         'custom': 'PROCEDURE',
       },
+      {
+        'kind': 'sep',
+      },
+      {
+        'kind': 'category',
+        'name': 'Sleep',
+        'categorystyle': 'operators_category',
+        'contents': [
+          {
+            'kind': 'block',
+            'type': 'time_sleep',
+          },
+        ],
+      },
     ],
+
   };
   
