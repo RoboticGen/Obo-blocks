@@ -1,274 +1,303 @@
 .notification {
-    font-family: "Roboto", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
-    padding: 10px 20px;
-    border-radius: 5px;
-    opacity: 0;
-    /* transition: opacity 2s ease-in-out; */
-    z-index: 9999; /* Ensure it appears on top of other elements */
-  }
-  
-  .notification.show {
-    opacity: 1;
-  }
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  border-radius: 5px;
+  opacity: 0;
+  /* transition: opacity 2s ease-in-out; */
+  z-index: 9999; /* Ensure it appears on top of other elements */
+}
+
+.notification.show {
+  opacity: 1;
+}
 
 .nav-bar {
-    grid-area: navBar;
-    position: sticky;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    background-color:#1a3a59ec;
-    margin: 0;
-    padding: 0;
+  grid-area: navBar;
+  position: sticky;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1a3a59ec;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-bar h3 {
-    margin: 10px;
+  margin: 10px;
 }
 
 .logo {
-    width: 7.8rem;
-    height: 2.3rem;
-    margin: 0.5rem 1.5rem 0.5rem 0.5rem;
+  width: 7.8rem;
+  height: 2.3rem;
+  margin: 0.5rem 1.5rem 0.5rem 0.5rem;
 }
 
 .obo-blocks-logo {
-    width: 16.46rem;
-    height: 2.8rem;
-    margin: 0.5rem 0.5rem 0.5rem 1rem;
+  width: 16.46rem;
+  height: 2.8rem;
+  margin: 0.5rem 0.5rem 0.5rem 1rem;
 }
 
 .blocky-editor {
-    grid-area: editor;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.6rem;
-    background-color: white;
-    border: 0.1rem solid rgba(77,151,255,.25);
-    padding: 0rem 0.2rem 0.2rem 0.2rem;
-    box-shadow: 2px 3px 18px 0px rgba(0, 0, 0, 0.34);
-    margin-left: 0.5rem;
+  grid-area: editor;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  border-radius: 0.6rem;
+  background-color: white;
+  border: 0.1rem solid rgba(77, 151, 255, 0.25);
+  padding: 0rem 0.2rem 0.2rem 0.2rem;
+  box-shadow: 2px 3px 18px 0px rgba(0, 0, 0, 0.34);
+  margin-left: 0.5rem;
 }
 
 .editor {
-    height: 99%;
-    width: 99%;
+  height: 99%;
+  width: 99%;
+}
+.editing-image
+{
+  height: 50%;
+  opacity: 0;
+  transition: 
+  height 0.5s,
+  opacity 1.5s;
+}
+.editing-image:active
+{
+  height: 70%;
+  opacity: 1;
+}
+.editing-image:hover
+{
+  height: 70;
+  opacity: 1;
 }
 
+
 .code {
-    grid-area: code;
-    display: flex;
-    flex-direction: column;
-    border-radius: 0.7rem;
-    background-color: white;
-    border: 0.1rem solid rgba(77,151,255,.25);
-    padding: 0.2rem;
-    margin-right: 0.5rem;
-    box-shadow: 2px 3px 18px 0px rgba(0, 0, 0, 0.34);
+  grid-area: code;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.7rem;
+  background-color: white;
+  border: 0.1rem solid rgba(77, 151, 255, 0.25);
+  padding: 0.2rem;
+  margin-right: 0.5rem;
+  box-shadow: 2px 3px 18px 0px rgba(0, 0, 0, 0.34);
+  overflow-y: auto;
+  max-height: 70vh;
+  min-height: 10vh;
+  overflow-x: hidden;
+  resize: vertical;
 }
-.code-title
-{
-    margin: 1rem;
-    font-weight: 500;
+
+
+
+div:nth-of-type(2)::-webkit-resizer {
+  background: transparent;
+}
+.code-title {
+  margin: 1rem;
+  font-weight: 500;
 }
 
 .button-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .button-group {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin-right: 0.5rem;
-
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 0.5rem;
 }
 
 .button-group a {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    margin:0.2rem;
-    padding: 0.3rem;
-    min-width: 4rem;
-    height: 1.4rem;
-    border-radius: 0.3rem;
-    border: none;
-    color: #ffffff;
-    font-weight: 400;
-    font-size: medium;
-    background-color: #9D9D9D;    
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0.2rem;
+  padding: 0.3rem;
+  min-width: 4rem;
+  height: 1.4rem;
+  border-radius: 0.3rem;
+  border: none;
+  color: #ffffff;
+  font-weight: 400;
+  font-size: medium;
+  background-color: #9d9d9d;
 }
 .button-group button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 #run-button:hover {
-    background-color: #45BD98;
+  background-color: #45bd98;
 }
 
 #copy-button:hover {
-    background-color:#32AAC6;
+  background-color: #32aac6;
 }
 #stop-button:hover {
-    background-color:#ef476f;
+  background-color: #ef476f;
 }
 #export-button:hover {
-    background-color:#7c4a18;
+  background-color: #7c4a18;
 }
 #edit-button:hover {
-    background-color:#1a3a59ec;
+  background-color: #1a3a59ec;
 }
 .code-snippet {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
-    background-color: #f3f3f3;
-    width: 100%;
-    height: 100%;
-    max-height: 35rem;
-    overflow-y: auto;
-
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  background-color: #f3f3f3;
+  width: 100%;
+  height: 100%;
+  max-height: 35rem;
+  overflow-y: auto;
 }
-.python
-{
-    display: block;
+.python {
+  display: block;
 }
 
 .disabled {
-    pointer-events: none; /* Disable pointer events */
-    opacity: 0.6; /* Optionally, make it visually indicate the disabled state */
+  pointer-events: none; /* Disable pointer events */
+  opacity: 0.6; /* Optionally, make it visually indicate the disabled state */
 }
 .output {
-    grid-area: output;
-    background-color: white;
-    border-radius: 0.7rem;
-    border: 0.1rem solid rgba(77,151,255,.25);
-    box-shadow: 2px 3px 18px 0px rgba(0, 0, 0, 0.34);
-    padding: 0.2rem;
-    margin-right: 0.5rem;
-    overflow-y: auto;
+  grid-area: output;
+  background-color: white;
+  border-radius: 0.7rem;
+  border: 0.1rem solid rgba(77, 151, 255, 0.25);
+  box-shadow: 2px 3px 18px 0px rgba(0, 0, 0, 0.34);
+  padding: 0.2rem;
+  margin-right: 0.5rem;
+  /* overflow-y: auto; */
 }
-.output-title
-{
-    margin: 1rem;
-    font-weight: 500;
-
+.output-title {
+  margin: 1rem;
+  font-weight: 500;
 }
 
-.terminal-output-div
-{
-    overflow-y: visible;
-    max-height: 10rem;
-
+.terminal-output-div {
+  overflow-y: auto;
+  resize: vertical;
 }
-.terminal-output
-{
-    margin-left: 1rem;
-    color: #9D9D9D;
-    width: 95%; 
-    height: 70%; 
-    resize: none;
-    border: none;
-    display: block;
-
+.terminal-output {
+  margin-left: 1rem;
+  color: #9d9d9d;
+  width: 95%;
+  overflow-y: auto;
+  resize: vertical;
+  border: none;
 }
 
-.terminal-output:focus{
-    border: 0 none #FFF;
-    overflow: hidden;
-    outline:none;
+.terminal-output:focus {
+  border: 0 none #fff;
+  overflow: hidden;
+  outline: none;
 }
 #clear-button:hover {
-    background-color: #DB9E14;
+  background-color: #db9e14;
 }
 
-
 .container {
-    display: grid;
-    font-family: "Roboto", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-    grid-template-rows: 1fr 8fr 3fr;
-    grid-template-areas:
-        "navBar navBar navBar navBar"
-        "editor editor editor code"
-        "editor editor editor output";
-    grid-gap: 0.5rem;
-    height: calc(100vh - 0.5rem);
+  display: grid;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  grid-template-rows: 1fr 8fr 3fr;
+  grid-template-areas:
+    "navBar navBar navBar navBar"
+    "editor editor editor code"
+    "editor editor editor output";
+  grid-gap: 0.5rem;
+  height: calc(100vh - 0.5rem);
+}
+.container-editing {
+  display: grid;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  grid-template-rows: 1fr 8fr 3fr;
+  grid-template-areas:
+    "navBar navBar navBar navBar"
+    "code code code code"
+    "output output output output";
+  grid-gap: 0.5rem;
+  height: calc(100vh - 0.5rem);
 }
 
 body {
-    background-color:rgba(77,151,255,.25);
-    margin: 0;
+  background-color: rgba(77, 151, 255, 0.25);
+  margin: 0;
 }
-.blocklyMainBackground
-{
-    stroke:none;
+.blocklyMainBackground {
+  stroke: none;
 }
 
 .blocklyToolboxDiv {
-    background-color: #f3f3f3;
+  background-color: #f3f3f3;
 }
 
 /* Makes our label white. */
 .blocklyTreeLabel {
-    color: white;
+  color: white;
 }
 
 /* Adds padding around the group of categories and separators. */
 .blocklyToolboxContents {
-    padding: 0.5em;
+  padding: 0.5em;
 }
 
 /* Adds space between the categories, rounds the corners and adds space around the label. */
 .blocklyTreeRow {
-    padding: 3px;
-    margin-bottom: 0.5em;
-    border-radius: 4px;
+  padding: 3px;
+  margin-bottom: 0.5em;
+  border-radius: 4px;
 }
 
 /* Changes color of the icon to white. */
 .customIcon {
-    color: white;
-    padding: 0.5em;
+  color: white;
+  padding: 0.5em;
 }
 
 /* Stacks the icon on top of the label. */
 .blocklyTreeRowContentContainer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: left;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
 }
 
 .blocklyTreeRow {
-    height: initial;
+  height: initial;
 }
 
 @media screen and (max-width: 768px) {
-    .container {
-        grid-template-areas:
-            "navBar navBar navBar navBar"
-            "editor editor editor editor"
-            "code code code code"
-            "output output output output";
-    }
-
+  .container {
+    grid-template-areas:
+      "navBar navBar navBar navBar"
+      "editor editor editor editor"
+      "code code code code"
+      "output output output output";
+  }
 }

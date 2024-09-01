@@ -1,111 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="description"
-        content="Obo Blocks : Convert Scratch Blocks to Python with Pydiode interpretation support and MicroPython extensions for seamless web-based Python execution.">
-    <meta name="keywords"
-        content="Obo Blocks,python,google,scratch,Blockly,visual programming,pyodide,web application,roboticgen academy,roboticgen">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Obo Blocks : Convert Scratch Blocks to Python with Pydiode interpretation support and MicroPython extensions for seamless web-based Python execution."
+    />
+    <meta
+      name="keywords"
+      content="Obo Blocks,python,google,scratch,Blockly,visual programming,pyodide,web application,roboticgen academy,roboticgen"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="msvalidate.01" content="F880277201EB0168D24B534ADC14C549" />
+    <link rel="preload" as="image" href="academyLogo.webp" />
+    <link rel="preload" as="image" href="obo_blocks.webp" />
+    <link rel="prefetch" as="image" href="editing.gif" />
     <title>Obo Blocks</title>
+  </head>
 
+  <body>
+    <div id="notification" class="notification">
+      <span id="notificationText"></span>
+    </div>
+    <div class="container">
+      <nav class="nav-bar">
+        <img
+          id="obo-blocks-logo"
+          class="obo-blocks-logo"
+          alt="Obo Blocks Logo"
+          src="obo_blocks.webp"
+        />
+
+        <a
+          href="https://roboticgenacademy.com/"
+          aria-label="Roboticgen Academy"
+        >
+          <img
+            id="roboticgen-academy-logo"
+            alt="Roboticgen Academy Logo"
+            class="logo"
+            src="academyLogo.webp"
+          />
+        </a>
+      </nav>
+
+      <div class="blocky-editor" id="blocky-editor">
+        <img loading="lazy" src="editing.gif" class="editing-image" id = "editing-image" alt="" style="display: none;">
+        <div class="button-row">
+          <p class="code-title">Visual Blocks</p>
+          <div class="button-group">
+            <a class="button" id="import-json-button"
+              ><i class="fa fa-file-import" style="padding-right: 2px"></i>
+              <span id="import-text">Import</span></a
+            >
+            <a class="button" id="export-json-button"
+              ><i class="fa fa-file-export" style="padding-right: 4px"></i
+              ><span id="export-text">Export</span></a
+            >
+          </div>
+        </div>
+        <div class="editor" id="editor"></div>
+      </div>
+      <div class="code" id="code" style="min-height: 10vh">
+        <div class="button-row">
+          <p class="code-title">Python Code</p>
+          <div class="button-group">
+            <a class="button" id="edit-button"
+              ><i class="fa fa-pencil" style="padding-right: 2px"></i>
+              <span id="edit-text">Edit</span></a
+            >
+            <a class="button" id="run-button"
+              ><i id="run-icon" class="fa fa-flag"></i>
+              <span id="run-text">Run</span></a
+            >
+            <a class="button" id="copy-button"
+              ><i class="fa fa-copy"></i><span id="copy-text">Copy</span></a
+            >
+            <a class="button" id="export-button"
+              ><i class="fa fa-file-export" style="padding-right: 4px"></i
+              ><span id="export-text">Export</span></a
+            >
+          </div>
+        </div>
+        <div class="code-snippet" id="code-editor"></div>
+      </div>
+      <div class="output" id="output">
+        <div class="button-row">
+          <label for="terminal-output" class="output-title">Output</label>
+          <div class="button-group">
+            <a class="button" id="clear-button"
+              ><i id="run-clear" class="fa fa-trash"></i>
+              <span id="run-text">Clear</span></a
+            >
+            <a class="button" id="stop-button"
+              ><i id="run-clear" class="fa fa-trash"></i>
+              <span id="stop-text">Stop</span></a
+            >
+          </div>
+        </div>
+        <div class="terminal-output-div">
+          <textarea
+            id="terminal-output"
+            class="terminal-output"
+            rows="10"
+            readonly
+          ></textarea>
+        </div>
+      </div>
+    </div>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TQ59G8QBC7"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-TQ59G8QBC7"
+    ></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-        gtag('config', 'G-TQ59G8QBC7');
+      gtag("config", "G-TQ59G8QBC7");
     </script>
     <!-- Clarity tag  -->
     <script type="text/javascript">
-        (function (c, l, a, r, i, t, y) {
-            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
-            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
-            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
-        })(window, document, "clarity", "script", "m86gvlhvgc");
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "m86gvlhvgc");
     </script>
-</head>
-
-<body>
-    <div id="notification" class="notification">
-        <span id="notificationText"></span>
-    </div>
-    <div class="container">
-        <nav class="nav-bar">
-            <img id="obo-blocks-logo" class="obo-blocks-logo" alt="Obo Blocks Logo">
-
-            <a href="https://roboticgenacademy.com/" aria-label="Roboticgen Academy">
-                <img id="roboticgen-academy-logo" alt="Roboticgen Academy Logo" class="logo">
-            </a>
-        </nav>
-
-        <div class="blocky-editor" id="blocky-editor">
-            <div class="editor" id="editor"></div>
-        </div>
-        <div class="code">
-            <div class="button-row">
-                <p class="code-title">Python Code</p>
-                <div class="button-group">
-                    <a class="button" id="edit-button"><i class="fa fa-pencil" style="padding-right: 2px;"></i> <span
-                            id="edit-text">Edit</span></a>
-                    <a class="button" id="run-button"><i id="run-icon" class="fa fa-flag"></i> <span
-                            id="run-text">Run</span></a>
-                    <a class="button" id="copy-button"><i class="fa fa-copy"></i><span id="copy-text">Copy</span></a>
-                    <a class="button" id="export-button"><i class="fa fa-file-export"
-                            style="padding-right: 4px;"></i><span id="export-text">Export</span></a>
-
-                </div>
-            </div>
-            <div class="code-snippet" id="code-editor">
-            </div>
-        </div>
-        <div class="output">
-            <div class="button-row">
-                <p class="output-title">Output</p>
-                <div class="button-group">
-                    <a class="button" id="clear-button"><i id="run-clear" class="fa fa-trash"></i> <span
-                            id="run-text">Clear</span></a>
-                    <a class="button" id="stop-button"><i id="run-clear" class="fa fa-trash"></i> <span
-                            id="stop-text">Stop</span></a>
-                </div>
-            </div>
-            <div class="terminal-output-div">
-                <label for="terminal-output"></label>
-                <textarea id="terminal-output" class="terminal-output" rows="10" readonly></textarea>
-            </div>
-        </div>
-    </div>
-</body>
-<script type="application/ld+json">
+  </body>
+  <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Obo Blocks",
-        "description": "Convert Scratch Blocks to Python with Pydiode interpretation support and MicroPython extensions for seamless web-based Python execution.",
-        "operatingSystem": "All",
-        "applicationCategory": "EducationalApplication",
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "ratingCount": "20"
-        },
-        "offers": {
-          "@type": "Offer",
-          "price": "0"            
-        },
-        "featureList": [
-            "Scratch Blocks to Python Code Conversion",
-            "Code Modification",
-            "Code Evaluation",
-            "Micropython Extension",
-            "Web Driven Code Uploader"
-        ],
-        "image": "https://oboblocks.roboticgenacademy.com/obo_blocks.webp",
-        "url": "https://oboblocks.roboticgenacademy.com/"
-      }
-</script>
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Obo Blocks",
+      "description": "Convert Scratch Blocks to Python with Pydiode interpretation support and MicroPython extensions for seamless web-based Python execution.",
+      "operatingSystem": "All",
+      "applicationCategory": "EducationalApplication",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "20"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0"
+      },
+      "featureList": [
+        "Scratch Blocks to Python Code Conversion",
+        "Code Modification",
+        "Code Evaluation",
+        "Micropython Extension",
+        "Web Driven Code Uploader"
+      ],
+      "image": "https://oboblocks.roboticgenacademy.com/obo_blocks.webp",
+      "url": "https://oboblocks.roboticgenacademy.com/"
+    }
+  </script>
 </html>
