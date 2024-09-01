@@ -1,0 +1,134 @@
+<xml xmlns="https://developers.google.com/blockly/xml"><block type="factory_base" id="hKZ#[Ps;w~3mvjE{-DMH" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">pinMode</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="AJdxyLP-xFG-n`r,w4Q.">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="qS$$L*z/t$_G*0^~|DP-">
+            <field name="TEXT">Set</field>
+            <next>
+              <block type="field_dropdown" id="~8+|4C,+EmS)AJ]^fT99">
+                <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
+                <field name="FIELDNAME">pinNumber</field>
+                <field name="USER0">1</field>
+                <field name="CPU0">1</field>
+                <field name="USER1">2</field>
+                <field name="CPU1">2</field>
+                <field name="USER2">3</field>
+                <field name="CPU2">3</field>
+                <next>
+                  <block type="field_static" id="@%-l9lbgHv;UOY*{_keX">
+                    <field name="TEXT">to</field>
+                    <next>
+                      <block type="field_variable" id="{n`jLnCcxAWW%O93aTyJ">
+                        <field name="TEXT">pin</field>
+                        <field name="FIELDNAME">pinVariable</field>
+                        <next>
+                          <block type="field_static" id="-R:R/YWD7ZqC7hL_7gp)">
+                            <field name="TEXT">as</field>
+                            <next>
+                              <block type="field_dropdown" id="yp7``z$^mr[x-d=p4lsV">
+                                <mutation options="[&quot;text&quot;,&quot;text&quot;]"></mutation>
+                                <field name="FIELDNAME">pinMode</field>
+                                <field name="USER0">Input</field>
+                                <field name="CPU0">IN</field>
+                                <field name="USER1">Output</field>
+                                <field name="CPU1">OUT</field>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="O7n@-n~^ZC4`NbQZB(Os" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="FL,V[md;/bgRTOyT+^O?" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="HyzW|9Pv({gBnKG)Zk.z"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="Sb+11#BM5|sA|gssY:fQ"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="jGOD`}Z8[7B|QnarCyv[">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="hKZ#[Ps;w~3mvjE{-DMH" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">pinState</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="AJdxyLP-xFG-n`r,w4Q.">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="qS$$L*z/t$_G*0^~|DP-">
+            <field name="TEXT">Set</field>
+            <next>
+              <block type="field_variable" id="{n`jLnCcxAWW%O93aTyJ">
+                <field name="TEXT">pin</field>
+                <field name="FIELDNAME">pinVariable</field>
+                <next>
+                  <block type="field_static" id="-R:R/YWD7ZqC7hL_7gp)">
+                    <field name="TEXT">to</field>
+                    <next>
+                      <block type="field_dropdown" id="yp7``z$^mr[x-d=p4lsV">
+                        <mutation options="[&quot;text&quot;,&quot;text&quot;]"></mutation>
+                        <field name="FIELDNAME">pinState</field>
+                        <field name="USER0">On</field>
+                        <field name="CPU0">on</field>
+                        <field name="USER1">Off</field>
+                        <field name="CPU1">off</field>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="O7n@-n~^ZC4`NbQZB(Os" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="FL,V[md;/bgRTOyT+^O?" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="HyzW|9Pv({gBnKG)Zk.z"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="Sb+11#BM5|sA|gssY:fQ"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="jGOD`}Z8[7B|QnarCyv[">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block></xml>

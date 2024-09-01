@@ -16,13 +16,17 @@ import {
 import * as Blockly from "blockly/core";
 import { toolbox } from "./blocky/toolbox";
 import { forBlock } from "./blocky/generator";
-import { pythonGenerator } from "blockly/python";
+// import { pythonGenerator } from "blockly/python";
+import { pythonGenerator } from "./micropython/setup";
 import { blocks } from "./blocky/blocks";
 import { OboCategory } from "./blocky/categories";
 import { theme } from "./blocky/themes";
 import { save, load, exportJson, importJson } from "./blocky/serialization";
 
 import { worker, terminal, stopWorker } from "./pyodide/loader";
+
+import { createPinButtonCallback } from "./micropython/callback";
+import { pinCategoryFlyout } from "./micropython/flyouts";
 
 let editable = false;
 let ws;
@@ -54,6 +58,8 @@ const outputDiv = document.getElementById("output");
 
 Blockly.common.defineBlocks(blocks);
 Object.assign(pythonGenerator.forBlock, forBlock);
+
+
 
 Blockly.registry.register(
   Blockly.registry.Type.TOOLBOX_ITEM,
@@ -120,6 +126,9 @@ function showNotification(message) {
 
 function initBlokly(workspace) {
   workspace = Blockly.inject(blocklyDiv, options);
+  workspace.registerToolboxCategoryCallback("PIN", pinCategoryFlyout);
+  workspace.registerButtonCallback("CREATE_PIN_VARIABLE", createPinButtonCallback);
+  workspace.updateToolbox(toolbox)
   workspace.addChangeListener((e) => {
     if (
       e.isUiEvent ||
