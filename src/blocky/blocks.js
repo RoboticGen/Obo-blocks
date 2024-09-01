@@ -411,7 +411,7 @@ Blockly.Blocks["time_sleep"] = {
       .appendField("Seconds");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(45);
+    this.setColour("#8c52ff");
     this.setTooltip("");
     this.setHelpUrl("");
   },
@@ -436,7 +436,7 @@ Blockly.Blocks["pin_state"] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(230);
+    this.setColour("#0768e8");
     this.setTooltip("");
     this.setHelpUrl("");
   },
@@ -462,7 +462,7 @@ Blockly.Blocks["pin_mode"] = {
       );
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(230);
+    this.setColour("#0768e8");
     this.setTooltip("");
     this.setHelpUrl("");
   },
@@ -486,7 +486,7 @@ Blockly.Blocks["pin_value"] = {
       );
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(230);
+    this.setColour("#0768e8");
     this.setTooltip("");
     this.setHelpUrl("");
   },

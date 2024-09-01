@@ -177,7 +177,7 @@ export const toolbox = {
     {
       kind: "category",
       name: "Sleep",
-      categorystyle: "operators_category",
+      categorystyle: "time_category",
       contents: [
         {
           kind: "block",
@@ -192,7 +192,7 @@ export const toolbox = {
     {
       kind: "category",
       name: "Micropython",
-      categorystyle: "logic_category",
+      categorystyle: "micropython_category",
       contents: [
         {
           kind: "button",
@@ -204,7 +204,7 @@ export const toolbox = {
     {
       kind: "category",
       name: "Pin",
-      categorystyle: "logic_category",
+      categorystyle: "pin_category",
       custom: "PIN",
     },
   ],
