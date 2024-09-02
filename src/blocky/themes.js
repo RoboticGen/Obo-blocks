@@ -32,11 +32,15 @@ const categoryStyles = {
   },
   micropython_category:
   {
-   colour:"#00bf63"
+   colour:"#00ae7b"
   },
   pin_category:
   {
-   colour:"#0768e8"
+   colour:"#005d8f"
+  },
+  adc_category:
+  {
+   colour:"#ff4300"
   },
 };
 

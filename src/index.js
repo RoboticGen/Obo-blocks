@@ -25,8 +25,8 @@ import { save, load, exportJson, importJson } from "./blocky/serialization";
 
 import { worker, terminal, stopWorker } from "./pyodide/loader";
 
-import { createPinButtonCallback } from "./micropython/callback";
-import { pinCategoryFlyout } from "./micropython/flyouts";
+import { createPinButtonCallback , createADCButtonCallback } from "./micropython/callback";
+import { pinCategoryFlyout ,adcCategoryFlyout} from "./micropython/flyouts";
 
 let editable = false;
 let ws;
@@ -127,7 +127,9 @@ function showNotification(message) {
 function initBlokly(workspace) {
   workspace = Blockly.inject(blocklyDiv, options);
   workspace.registerToolboxCategoryCallback("PIN", pinCategoryFlyout);
+  workspace.registerToolboxCategoryCallback("ADC",adcCategoryFlyout)
   workspace.registerButtonCallback("CREATE_PIN_VARIABLE", createPinButtonCallback);
+  workspace.registerButtonCallback("CREATE_ADC_VARIABLE",createADCButtonCallback);
   workspace.updateToolbox(toolbox)
   workspace.addChangeListener((e) => {
     if (

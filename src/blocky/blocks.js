@@ -6,6 +6,8 @@
 
 import * as Blockly from "blockly/core";
 
+import { defaultVariableValidator, pinModeBlockValidator , adcBlockValidator } from "./validator";
+
 Blockly.Blocks["string_block"] = {
   init: function () {
     this.appendDummyInput().appendField(
@@ -419,6 +421,7 @@ Blockly.Blocks["time_sleep"] = {
 
 Blockly.Blocks["pin_state"] = {
   init: function () {
+
     this.appendDummyInput()
       .appendField("Set")
       .appendField(
@@ -439,6 +442,7 @@ Blockly.Blocks["pin_state"] = {
     this.setColour("#0768e8");
     this.setTooltip("");
     this.setHelpUrl("");
+    this.setOnChange(pinModeBlockValidator);
   },
 };
 
@@ -489,7 +493,88 @@ Blockly.Blocks["pin_value"] = {
     this.setColour("#0768e8");
     this.setTooltip("");
     this.setHelpUrl("");
+    this.setOnChange(pinModeBlockValidator);
   },
 };
 
+// Blockly.Blocks["create_adc"] = {
+//   init: function () {
+//     this.appendDummyInput()
+//       .appendField("Create ADC from")
+//       .appendField(
+//         new Blockly.FieldVariable("pin", null, ["Pin"], "Pin"),
+//         "pin_variable"
+//       );
+//     this.setPreviousStatement(true, null);
+//     this.setNextStatement(true, null);
+//     this.setColour(230);
+//     this.setTooltip("");
+//     this.setHelpUrl("");
+//   },
+// };
+
+Blockly.Blocks["create_adc"] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField("Create ADC from")
+      .appendField(
+        new Blockly.FieldVariable("pin", null, ["Pin"], "Pin"),
+        "pin_variable"
+      )
+      .appendField("as")
+      .appendField(
+        new Blockly.FieldVariable("adc", null, ["ADC"], "ADC"),
+        "adc_variable"
+      );
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  },
+};
+
+Blockly.Blocks["read_adc"] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField("Read")
+      .appendField(
+        new Blockly.FieldVariable("adc", null, ["ADC"], "ADC"),
+        "ADC"
+      )
+      .appendField("assign variable to")
+      .appendField(
+        new Blockly.FieldVariable("var", defaultVariableValidator),
+        "Var"
+      );
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+    this.setTooltip("");
+    this.setHelpUrl("");
+    this.setOnChange(adcBlockValidator)
+  },
+};
+
+Blockly.Blocks["read_micro_volt"] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField("Read micro volts from ")
+      .appendField(
+        new Blockly.FieldVariable("adc", null, ["ADC"], "ADC"),
+        "ADC"
+      )
+      .appendField("and assign to")
+      .appendField(
+        new Blockly.FieldVariable("var", defaultVariableValidator),
+        "Var"
+      );
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+    this.setTooltip("");
+    this.setHelpUrl("");
+    this.setOnChange(adcBlockValidator)
+  },
+};
 export const blocks = Blockly.Blocks;

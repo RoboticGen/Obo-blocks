@@ -259,11 +259,11 @@ forBlock["variables_get"] = function (block, generator) {
   return [code, Order.ATOMIC];
 };
 
-forBlock['variables_set'] = function(block, generator) {
-    const argument0 = generator.valueToCode(block, 'VALUE', Order.NONE) || '0';
-    const varName = generator.getVariableName(block.getFieldValue('VAR'));
-    return varName + ' = ' + argument0 + '\n';
-  }
+forBlock["variables_set"] = function (block, generator) {
+  const argument0 = generator.valueToCode(block, "VALUE", Order.NONE) || "0";
+  const varName = generator.getVariableName(block.getFieldValue("VAR"));
+  return varName + " = " + argument0 + "\n";
+};
 
 forBlock["pin_state"] = function (block, generator) {
   if (!generator.definitions_["import_machine"]) {
@@ -294,14 +294,77 @@ forBlock["pin_mode"] = function (block, generator) {
   return code;
 };
 
+forBlock["pin_value"] = function (block, generator) {
+  if (!generator.definitions_["import_machine"]) {
+    generator.definitions_["import_machine"] = "import machine";
+  }
 
-forBlock['pin_value'] = function(block, generator) {
-    if (!generator.definitions_["import_machine"]) {
-        generator.definitions_["import_machine"] = "import machine";
-      }
-    
-    var variable_pin_variable = generator.getVariableName(block.getFieldValue('pin_variable'), Blockly.Variables.NAME_TYPE);
-    var dropdown_pin_values = block.getFieldValue('pin_values');
-    var code = `${variable_pin_variable}.value(${dropdown_pin_values})\n`;
-    return code;
-  };
+  var variable_pin_variable = generator.getVariableName(
+    block.getFieldValue("pin_variable"),
+    Blockly.Variables.NAME_TYPE
+  );
+  var dropdown_pin_values = block.getFieldValue("pin_values");
+  var code = `${variable_pin_variable}.value(${dropdown_pin_values})\n`;
+  return code;
+};
+
+forBlock["create_adc"] = function (block, generator) {
+  if (!generator.definitions_["import_machine"]) {
+    generator.definitions_["import_machine"] = "import machine";
+  }
+  var variable_pin_variable = generator.getVariableName(
+    block.getFieldValue("pin_variable"),
+    Blockly.Variables.NAME_TYPE
+  );
+  var variable_adc_variable = generator.getVariableName(
+    block.getFieldValue("adc_variable"),
+    Blockly.Variables.NAME_TYPE
+  );
+  var code = `${variable_adc_variable} = machine.ADC(${variable_pin_variable})\n`;
+  return code;
+};
+
+forBlock["read_adc"] = function (block, generator) {
+  if (!generator.definitions_["import_machine"]) {
+    generator.definitions_["import_machine"] = "import machine";
+  }
+  var variable_adc_variable = generator.getVariableName(
+    block.getFieldValue("adc_variable"),
+    Blockly.Variables.NAME_TYPE
+  );
+  var value_adc_value = generator.valueToCode(block, "adc_value", Order.ATOMIC);
+  var code = `${value_adc_value} = ${variable_adc_variable}.read_u16()\n`;
+  return code;
+};
+
+forBlock["read_adc"] = function (block, generator) {
+  if (!generator.definitions_["import_machine"]) {
+    generator.definitions_["import_machine"] = "import machine";
+  }
+  var variable_adc = generator.getVariableName(
+    block.getFieldValue("ADC"),
+    Blockly.Variables.NAME_TYPE
+  );
+  var variable_var = generator.getVariableName(
+    block.getFieldValue("Var"),
+    Blockly.Variables.NAME_TYPE
+  );
+  var code = `${variable_var} = ${variable_adc}.read_u16()\n`;
+  return code;
+};
+
+forBlock["read_micro_volt"] = function (block, generator) {
+  if (!generator.definitions_["import_machine"]) {
+    generator.definitions_["import_machine"] = "import machine";
+  }
+  var variable_adc = generator.getVariableName(
+    block.getFieldValue("ADC"),
+    Blockly.Variables.NAME_TYPE
+  );
+  var variable_var = generator.getVariableName(
+    block.getFieldValue("Var"),
+    Blockly.Variables.NAME_TYPE
+  );
+  var code = `${variable_var} = ${variable_adc}.read_uv()\n`;
+  return code;
+};

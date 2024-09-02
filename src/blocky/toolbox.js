@@ -199,6 +199,12 @@ export const toolbox = {
           text: "Create pin...",
           callbackKey: "CREATE_PIN_VARIABLE",
         },
+        {
+          kind: "button",
+          text: "Create adc...",
+          callbackKey: "CREATE_ADC_VARIABLE",
+        },
+
       ],
     },
     {
@@ -207,5 +213,11 @@ export const toolbox = {
       categorystyle: "pin_category",
       custom: "PIN",
     },
+    {
+      kind: "category",
+      name: "ADC",
+      categorystyle: "adc_category",
+      custom: "ADC",
+    }
   ],
 };
