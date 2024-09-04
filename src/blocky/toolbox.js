@@ -199,6 +199,21 @@ export const toolbox = {
           text: "Create pin...",
           callbackKey: "CREATE_PIN_VARIABLE",
         },
+        {
+          kind: "button",
+          text: "Create adc...",
+          callbackKey: "CREATE_ADC_VARIABLE",
+        },
+        {
+          kind: "button",
+          text: "Create pwm...",
+          callbackKey: "CREATE_PWM_VARIABLE",
+        },
+        {
+          kind: "button",
+          text: "Create i2c...",
+          callbackKey: "CREATE_I2C_VARIABLE",
+        },
       ],
     },
     {
@@ -207,5 +222,23 @@ export const toolbox = {
       categorystyle: "pin_category",
       custom: "PIN",
     },
+    {
+      kind: "category",
+      name: "ADC",
+      categorystyle: "adc_category",
+      custom: "ADC",
+    },
+    {
+      kind: "category",
+      name: "PWM",
+      categorystyle: "pwm_category",
+      custom: "PWM",
+    },
+    {
+      kind: "category",
+      name: "I2C",
+      categorystyle: "i2c_category",
+      custom: "I2C",
+    }
   ],
 };

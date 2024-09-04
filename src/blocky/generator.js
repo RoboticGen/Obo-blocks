@@ -13,6 +13,38 @@ import * as Blockly from "blockly";
 // This file has no side effects!
 export const forBlock = Object.create(null);
 
+forBlock["math_change"] = function (block, generator) {
+  generator.definitions_["from_numbers_import_Number"] =
+    "from numbers import Number";
+  const argument0 =
+    generator.valueToCode(block, "DELTA", Order.ADDITIVE) || "0";
+  const varName = generator.getVariableName(block.getFieldValue("VAR"));
+  return (
+    varName +
+    " = (" +
+    varName +
+    " if isinstance(" +
+    varName +
+    ", Number) else 0) + " +
+    argument0 +
+    "\n"
+  );
+};
+
+forBlock['math_number'] = function math_number(block,generator)
+{
+  // Numeric value.
+  let number = Number(block.getFieldValue('NUM'));
+  if (number === Infinity) {
+    return ['float("inf")', Order.FUNCTION_CALL];
+  } else if (number === -Infinity) {
+    return ['-float("inf")', Order.UNARY_SIGN];
+  } else {
+    return [String(number), number < 0 ? Order.UNARY_SIGN : Order.ATOMIC];
+  }
+}
+
+
 forBlock["print_block"] = function (block, generator) {
   var value_value = generator.valueToCode(block, "value", Order.ATOMIC);
   var code = "print(" + value_value + ")\n";
@@ -259,11 +291,11 @@ forBlock["variables_get"] = function (block, generator) {
   return [code, Order.ATOMIC];
 };
 
-forBlock['variables_set'] = function(block, generator) {
-    const argument0 = generator.valueToCode(block, 'VALUE', Order.NONE) || '0';
-    const varName = generator.getVariableName(block.getFieldValue('VAR'));
-    return varName + ' = ' + argument0 + '\n';
-  }
+forBlock["variables_set"] = function (block, generator) {
+  const argument0 = generator.valueToCode(block, "VALUE", Order.NONE) || "0";
+  const varName = generator.getVariableName(block.getFieldValue("VAR"));
+  return varName + " = " + argument0 + "\n";
+};
 
 forBlock["pin_state"] = function (block, generator) {
   if (!generator.definitions_["import_machine"]) {
@@ -294,14 +326,189 @@ forBlock["pin_mode"] = function (block, generator) {
   return code;
 };
 
+forBlock["pin_value"] = function (block, generator) {
+  if (!generator.definitions_["import_machine"]) {
+    generator.definitions_["import_machine"] = "import machine";
+  }
 
-forBlock['pin_value'] = function(block, generator) {
-    if (!generator.definitions_["import_machine"]) {
-        generator.definitions_["import_machine"] = "import machine";
-      }
-    
-    var variable_pin_variable = generator.getVariableName(block.getFieldValue('pin_variable'), Blockly.Variables.NAME_TYPE);
-    var dropdown_pin_values = block.getFieldValue('pin_values');
-    var code = `${variable_pin_variable}.value(${dropdown_pin_values})\n`;
-    return code;
-  };
+  var variable_pin_variable = generator.getVariableName(
+    block.getFieldValue("pin_variable"),
+    Blockly.Variables.NAME_TYPE
+  );
+  var dropdown_pin_values = block.getFieldValue("pin_values");
+  var code = `${variable_pin_variable}.value(${dropdown_pin_values})\n`;
+  return code;
+};
+
+forBlock["create_adc"] = function (block, generator) {
+  if (!generator.definitions_["import_machine"]) {
+    generator.definitions_["import_machine"] = "import machine";
+  }
+  var variable_pin_variable = generator.getVariableName(
+    block.getFieldValue("pin_variable"),
+    Blockly.Variables.NAME_TYPE
+  );
+  var variable_adc_variable = generator.getVariableName(
+    block.getFieldValue("adc_variable"),
+    Blockly.Variables.NAME_TYPE
+  );
+  var code = `${variable_adc_variable} = machine.ADC(${variable_pin_variable})\n`;
+  return code;
+};
+
+forBlock["read_adc"] = function (block, generator) {
+  if (!generator.definitions_["import_machine"]) {
+    generator.definitions_["import_machine"] = "import machine";
+  }
+  var variable_adc_variable = generator.getVariableName(
+    block.getFieldValue("adc_variable"),
+    Blockly.Variables.NAME_TYPE
+  );
+  var value_adc_value = generator.valueToCode(block, "adc_value", Order.ATOMIC);
+  var code = `${value_adc_value} = ${variable_adc_variable}.read_u16()\n`;
+  return code;
+};
+
+forBlock["read_adc"] = function (block, generator) {
+  if (!generator.definitions_["import_machine"]) {
+    generator.definitions_["import_machine"] = "import machine";
+  }
+  var variable_adc = generator.getVariableName(
+    block.getFieldValue("ADC"),
+    Blockly.Variables.NAME_TYPE
+  );
+  var variable_var = generator.getVariableName(
+    block.getFieldValue("Var"),
+    Blockly.Variables.NAME_TYPE
+  );
+  var code = `${variable_var} = ${variable_adc}.read_u16()\n`;
+  return code;
+};
+
+forBlock["read_micro_volt"] = function (block, generator) {
+  if (!generator.definitions_["import_machine"]) {
+    generator.definitions_["import_machine"] = "import machine";
+  }
+  var variable_adc = generator.getVariableName(
+    block.getFieldValue("ADC"),
+    Blockly.Variables.NAME_TYPE
+  );
+  var variable_var = generator.getVariableName(
+    block.getFieldValue("Var"),
+    Blockly.Variables.NAME_TYPE
+  );
+  var code = `${variable_var} = ${variable_adc}.read_uv()\n`;
+  return code;
+};
+
+forBlock["create_pwm"] = function (block, generator) {
+  if (!generator.definitions_["import_machine"]) {
+    generator.definitions_["import_machine"] = "import machine";
+  }
+  var variable_pwm = generator.getVariableName(
+    block.getFieldValue("PWM"),
+    Blockly.Variables.NAME_TYPE
+  );
+  var variable_pin = generator.getVariableName(
+    block.getFieldValue("Pin"),
+    Blockly.Variables.NAME_TYPE
+  );
+  var number_frequency = block.getFieldValue("frequency");
+  var number_duty = block.getFieldValue("duty");
+  var code = `${variable_pwm} = machine.PWM(${variable_pin}, freq=${number_frequency}, duty_u16=${number_duty})\n`;
+  return code;
+};
+
+forBlock['set_pwm_duty'] = function(block, generator) {
+  if (!generator.definitions_["import_machine"]) {
+    generator.definitions_["import_machine"] = "import machine";
+  }
+  var variable_pwm = generator.getVariableName(block.getFieldValue('PWM'), Blockly.Variables.NAME_TYPE);
+  var number_duty_cycle = block.getFieldValue('duty_cycle');
+  var code = `${variable_pwm}.duty_u16(${number_duty_cycle})\n`;
+  return code;
+};
+
+forBlock['init_pwm'] = function(block, generator) {
+  if (!generator.definitions_["import_machine"]) {
+    generator.definitions_["import_machine"] = "import machine";
+  }
+  var variable_pwm = generator.getVariableName(block.getFieldValue('PWM'), Blockly.Variables.NAME_TYPE);
+  var number_frequency = block.getFieldValue('frequency');
+  var number_duty = block.getFieldValue('duty');
+  var code = `${variable_pwm}.init(freq=${number_frequency},duty_ns=${number_duty})\n`;
+  return code;
+};
+
+forBlock['deinitilize_pwm'] = function(block, generator) {
+  if (!generator.definitions_["import_machine"]) {
+    generator.definitions_["import_machine"] = "import machine";
+  }
+  var variable_pwm = generator.getVariableName(block.getFieldValue('PWM'), Blockly.Variables.NAME_TYPE);
+  var code = `${variable_pwm}.deinit()\n`;
+  return code;
+};
+
+forBlock['set_duty_ns'] = function(block, generator) {
+  if (!generator.definitions_["import_machine"]) {
+    generator.definitions_["import_machine"] = "import machine";
+  }
+  var variable_pwm = generator.getVariableName(block.getFieldValue('PWM'), Blockly.Variables.NAME_TYPE);
+  var number_duty_ns = block.getFieldValue('duty_ns');
+  var code = `${variable_pwm}.duty_ns(${number_duty_ns})\n`;
+  return code;
+};
+
+forBlock['set_frequency'] = function(block, generator) {
+  if (!generator.definitions_["import_machine"]) {
+    generator.definitions_["import_machine"] = "import machine";
+  }
+  var variable_pwm = generator.getVariableName(block.getFieldValue('PWM'), Blockly.Variables.NAME_TYPE);
+  var number_frequency = block.getFieldValue('frequency');
+  var code = `${variable_pwm}.freq(${number_frequency})\n`;
+  return code;
+};
+
+
+forBlock['i2c'] = function(block, generator) {
+  if (!generator.definitions_["import_machine"]) {
+    generator.definitions_["import_machine"] = "import machine";
+  }
+  var variable_sclpin = generator.getVariableName(block.getFieldValue('sclPin'), Blockly.Variables.NAME_TYPE);
+  var variable_sdapin = generator.getVariableName(block.getFieldValue('sdaPin'), Blockly.Variables.NAME_TYPE);
+  var number_frequency = block.getFieldValue('frequency');
+  var variable_i2c = generator.getVariableName(block.getFieldValue('i2c'), Blockly.Variables.NAME_TYPE);
+  // TODO: Assemble python into code variable.
+  var code = `${variable_i2c} = machine.I2C(scl=${variable_sclpin},sda=${variable_sdapin},freq=${number_frequency})\n`;
+  return code;
+};
+
+forBlock['i2c_init'] = function(block, generator) {
+  if (!generator.definitions_["import_machine"]) {
+    generator.definitions_["import_machine"] = "import machine";
+  }
+  var variable_sclpin = generator.getVariableName(block.getFieldValue('sclPin'), Blockly.Variables.NAME_TYPE);
+  var variable_sdapin = generator.getVariableName(block.getFieldValue('sdaPin'), Blockly.Variables.NAME_TYPE);
+  var number_frequency = block.getFieldValue('frequency');
+  var variable_i2c = generator.getVariableName(block.getFieldValue('i2c'), Blockly.Variables.NAME_TYPE);
+  var code = `${variable_i2c} = machine.I2C(scl=${variable_sclpin},sda=${variable_sdapin},freq=${number_frequency})\n`;
+  return code;
+};
+
+forBlock['deint_i2c'] = function(block, generator) {
+  if (!generator.definitions_["import_machine"]) {
+    generator.definitions_["import_machine"] = "import machine";
+  }
+  var variable_i2c = generator.getVariableName(block.getFieldValue('i2c'), Blockly.Variables.NAME_TYPE);
+  var code = `${variable_i2c}.deint()\n`;
+  return code;
+};
+
+forBlock['i2c_scan'] = function(block, generator) {
+  if (!generator.definitions_["import_machine"]) {
+    generator.definitions_["import_machine"] = "import machine";
+  }
+  var variable_i2c = generator.getVariableName(block.getFieldValue('I2C'), Blockly.Variables.NAME_TYPE);
+  var code = `${variable_i2c}.scan()\n`;
+  return code;
+};
