@@ -204,7 +204,16 @@ export const toolbox = {
           text: "Create adc...",
           callbackKey: "CREATE_ADC_VARIABLE",
         },
-
+        {
+          kind: "button",
+          text: "Create pwm...",
+          callbackKey: "CREATE_PWM_VARIABLE",
+        },
+        {
+          kind: "button",
+          text: "Create i2c...",
+          callbackKey: "CREATE_I2C_VARIABLE",
+        },
       ],
     },
     {
@@ -218,6 +227,18 @@ export const toolbox = {
       name: "ADC",
       categorystyle: "adc_category",
       custom: "ADC",
+    },
+    {
+      kind: "category",
+      name: "PWM",
+      categorystyle: "pwm_category",
+      custom: "PWM",
+    },
+    {
+      kind: "category",
+      name: "I2C",
+      categorystyle: "i2c_category",
+      custom: "I2C",
     }
   ],
 };

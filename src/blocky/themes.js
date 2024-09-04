@@ -26,21 +26,23 @@ const categoryStyles = {
     colour: "#FF6680",
     "css-icon": "fa fa-file",
   },
-  time_category:
-  {
-   colour:"#8c52ff"
+  time_category: {
+    colour: "#8c52ff",
   },
-  micropython_category:
-  {
-   colour:"#00ae7b"
+  micropython_category: {
+    colour: "#00ae7b",
   },
-  pin_category:
-  {
-   colour:"#005d8f"
+  pin_category: {
+    colour: "#005d8f",
   },
-  adc_category:
-  {
-   colour:"#ff4300"
+  adc_category: {
+    colour: "#ff4300",
+  },
+  pwm_category: {
+    colour: "#6e9d2f",
+  },
+  i2c_category: {
+    colour: "#797c7d",
   },
 };
 

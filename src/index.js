@@ -25,8 +25,8 @@ import { save, load, exportJson, importJson } from "./blocky/serialization";
 
 import { worker, terminal, stopWorker } from "./pyodide/loader";
 
-import { createPinButtonCallback , createADCButtonCallback } from "./micropython/callback";
-import { pinCategoryFlyout ,adcCategoryFlyout} from "./micropython/flyouts";
+import { createPinButtonCallback , createADCButtonCallback ,createPWMButtonCallback, createI2CButtonCallback } from "./micropython/callback";
+import { pinCategoryFlyout ,adcCategoryFlyout , pwmCategoryFlyout ,i2cCategoryFlyout} from "./micropython/flyouts";
 
 let editable = false;
 let ws;
@@ -128,8 +128,15 @@ function initBlokly(workspace) {
   workspace = Blockly.inject(blocklyDiv, options);
   workspace.registerToolboxCategoryCallback("PIN", pinCategoryFlyout);
   workspace.registerToolboxCategoryCallback("ADC",adcCategoryFlyout)
+  workspace.registerToolboxCategoryCallback("PWM",pwmCategoryFlyout)
+  workspace.registerToolboxCategoryCallback("I2C",i2cCategoryFlyout)
+
   workspace.registerButtonCallback("CREATE_PIN_VARIABLE", createPinButtonCallback);
   workspace.registerButtonCallback("CREATE_ADC_VARIABLE",createADCButtonCallback);
+  workspace.registerButtonCallback("CREATE_PWM_VARIABLE",createPWMButtonCallback);
+  workspace.registerButtonCallback("CREATE_I2C_VARIABLE",createI2CButtonCallback);
+
+
   workspace.updateToolbox(toolbox)
   workspace.addChangeListener((e) => {
     if (
