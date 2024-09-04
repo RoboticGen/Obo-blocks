@@ -5,7 +5,7 @@
 | Version | Date | Status |
 | ---| ---| --- |
 | 1.0 | 09/04/2024 | Approved |
-| 1.1 | 16/04/2024 | Pending Approval |
+| 1.1 | 16/04/2024 | Approved |
 
 ## Reference
 
@@ -73,7 +73,7 @@ The technology stack of obo blocks will be as follow
 
 ### External APIs and Services
 
-*   Third-Party APIs: 
+*   Third-Party APIs:
     - Blocky
     - Pydiode
     - Highlightjs
@@ -106,5 +106,3 @@ Hosting/Cloud Provider : Netlify for Development and AWS for Deployment
 *   [Python](https://www.python.org/)
 *   [Pydiode](https://pyodide.org/en/stable/)
 *   [Highlightjs](https://highlightjs.org/)
-
-  

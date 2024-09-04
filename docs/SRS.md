@@ -6,7 +6,9 @@
 | ---| ---| --- |
 | 1.0 | 02/04/2024 | Approved |
 | 1.1 | 08/04/2024 | Approved |
-| 1.2 | 16/04/2024 | Pending Approval |
+| 1.2 | 16/04/2024 | Approved |
+| 2.0 | 06/09/2024 | Pending Approval |
+
 
 ## Introduction
 
@@ -99,24 +101,27 @@ Here is breakdown of development phase with durations
 
 ### Milestones
 
-- [x] Completion of Requirements Gathering and Analysis
-- [x] Completion of Design and Architecture
-- Frontend Development
-    - [x] Release 1.0
-    - [x] Release 2.0
-    - [x] Release 3.0
-    - [ ] Release 4.0
-    - [ ] Release 5.0
-    - [ ] Release 6.0
-- Backend Development
-    - [x] Release 1.0
-    - [x] Release 2.0
-    - [x] Release 3.0
-    - [ ] Release 4.0
-    - [ ] Release 5.0
-    - [ ] Release 6.0
-- [ ] Integration and Testing
-- [ ]     Final Deployment
+- Completion of Requirements Gathering and Analysis
+- Completion of Design and Architecture
+  - Frontend Development
+      - [x] Release 1.0
+      - [x] Release 2.0
+      - [x] Release 3.0
+      - [x] Release 4.0
+      - [x] Release 5.0
+      - [ ] Release 6.0
+  - Backend Development
+      - [x] Release 1.0
+      - [x] Release 2.0
+      - [x] Release 3.0
+      - [x] Release 4.0
+      - [x] Release 5.0
+      - [ ] Release 6.0
+- Integration and Testing
+  - [x] Initial Deployment
+  - [ ] Testing
+- Final Deployment
+  - [ ] Final Deployment
 
 ## **Budget**
 
@@ -145,6 +150,10 @@ This release will update for the Release 4.0 with added support for micropython 
 ### Release 6.0
 
 This release will update for the Release 5.0 with added support for code upload to ESP32 (Magicbit)
+
+### Review
+
+This release will test the final product and make necessary changes to the product
 
 ## **Glossary**
 
