@@ -1,0 +1,419 @@
+<xml xmlns="https://developers.google.com/blockly/xml"><block type="factory_base" id="BoyAeu.9Mjl)9f*BX~tw" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">create_pwm</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="nilD:$w^I-cUs~#l.y?E">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="~iSMzBbgb^+!Z1ArBb[n">
+            <field name="TEXT">Create PWM from</field>
+            <next>
+              <block type="field_variable" id="#ui%h%gj)_b3neceq62o">
+                <field name="TEXT">pin</field>
+                <field name="FIELDNAME">Pin</field>
+                <next>
+                  <block type="field_static" id="RM8$ny$qSWD8-P.5]Neu">
+                    <field name="TEXT">with Frequency</field>
+                    <next>
+                      <block type="field_number" id="#V:/ve5q]YQ-xWs6f?R9">
+                        <field name="VALUE">50</field>
+                        <field name="FIELDNAME">frequency</field>
+                        <field name="MIN">0</field>
+                        <field name="MAX">Infinity</field>
+                        <field name="PRECISION">10</field>
+                        <next>
+                          <block type="field_static" id="pg^q2b/Z6D^H)`=nG_^#">
+                            <field name="TEXT">Duty</field>
+                            <next>
+                              <block type="field_number" id="s9DyEk8;Wb^iDlv9|`rV">
+                                <field name="VALUE">8000</field>
+                                <field name="FIELDNAME">duty</field>
+                                <field name="MIN">0</field>
+                                <field name="MAX">Infinity</field>
+                                <field name="PRECISION">10</field>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="(xz2qsyL5*rw1HjNoT;L" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="A~WzO.SaGBwEPs_pSY%B" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="AJOY1-XpnmFl9wi.e~cy"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="3x~$Ve;$GMPxTF/dd]VW"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="A3+5)Z8vu0LxNl9?L]Nt">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="nYa~8QO=3D:nY.AMY5go" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">set_pwm_duty</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="af2LQyIGA2-$w9?*V:1d">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="zb?sYq16$ugLEfJiL.Yl">
+            <field name="TEXT"> Set duty cycle of</field>
+            <next>
+              <block type="field_variable" id="c}$R+^$[iLzv8Be;`!@J">
+                <field name="TEXT">pwm</field>
+                <field name="FIELDNAME">PWM</field>
+                <next>
+                  <block type="field_static" id="b0MOc/x7fx.FTEYiC~sA">
+                    <field name="TEXT">to</field>
+                    <next>
+                      <block type="field_number" id="(4OZI.BaU^[):Gr:O)Rj">
+                        <field name="VALUE">32768</field>
+                        <field name="FIELDNAME">duty_cycle</field>
+                        <field name="MIN">0</field>
+                        <field name="MAX">Infinity</field>
+                        <field name="PRECISION">0</field>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="NG[BjUJ268/,eV:.`u7Z" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="SqV+Go]z-dWkK:]F!q[j" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="c-lUb^d;-aXm5%k|E7)@"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="E#0-5(r-;Xq(D!rg6Ove"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="fuP+n)kw}$}mSIf?,*|p">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="1o]ZzfvwZTz;~NP7j$ZK" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">init_pwm</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="nilD:$w^I-cUs~#l.y?E">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="~iSMzBbgb^+!Z1ArBb[n">
+            <field name="TEXT">Initialize</field>
+            <next>
+              <block type="field_variable" id="2A42c].T@kG5@A0E59v^">
+                <field name="TEXT">pwm</field>
+                <field name="FIELDNAME">PWM</field>
+                <next>
+                  <block type="field_static" id="Hs}e;-`CktAzCyT/A@zt">
+                    <field name="TEXT">with Frequency</field>
+                    <next>
+                      <block type="field_number" id="#V:/ve5q]YQ-xWs6f?R9">
+                        <field name="VALUE">50</field>
+                        <field name="FIELDNAME">frequency</field>
+                        <field name="MIN">0</field>
+                        <field name="MAX">Infinity</field>
+                        <field name="PRECISION">10</field>
+                        <next>
+                          <block type="field_static" id="pg^q2b/Z6D^H)`=nG_^#">
+                            <field name="TEXT">Duty</field>
+                            <next>
+                              <block type="field_number" id="s9DyEk8;Wb^iDlv9|`rV">
+                                <field name="VALUE">8000</field>
+                                <field name="FIELDNAME">duty</field>
+                                <field name="MIN">0</field>
+                                <field name="MAX">Infinity</field>
+                                <field name="PRECISION">10</field>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="o9#l?byN^UMs+K+1uff?" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id=".e+S{WNcc)(.{bo.D%Ob" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="Rn/ngPCrzme$a.p.pr{Y"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="3{p#C@PgdIc8`iDt%Eli"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="m.7GLI(dlejF=@@FeW4H">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="VCE*O(f?1af6*7wKyW#I" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">deinitilize_pwm</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="n}9e9vSMR=6]/Xm3Ah)=">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="U:u4TJu0%VN,,;)Ev[%;">
+            <field name="TEXT">Deinitialize</field>
+            <next>
+              <block type="field_variable" id="jis!snhX`4s1b^1w}zv#">
+                <field name="TEXT">pwm</field>
+                <field name="FIELDNAME">PWM</field>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="LPwl8m8j45d}[Z61u2qR" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="(,8L#Js$k9%I*5)J6|y)" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="%Cu)O5.gw+jJ%SY/NUPB"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="kODg2sx{LxOcV69(BQ`}"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="YGK@#v%?j~-Rrh(kdC;/">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="_TRq^k%jEs`wo][KO0u^" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">set_duty_ns</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="3{Q;AW|ZKbRW3!cAC,oV">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="33{|~~!ixM9@G#I|.tDu">
+            <field name="TEXT">Set duty of</field>
+            <next>
+              <block type="field_variable" id="d/Ytz`O%Tlki#?obv6(9">
+                <field name="TEXT">pwm</field>
+                <field name="FIELDNAME">PWM</field>
+                <next>
+                  <block type="field_static" id="a!-d{_2hZeeF+~z;sLv7">
+                    <field name="TEXT">to</field>
+                    <next>
+                      <block type="field_number" id="A(W(0%2JLt[9rf?.cMO~">
+                        <field name="VALUE">5000</field>
+                        <field name="FIELDNAME">duty_ns</field>
+                        <field name="MIN">0</field>
+                        <field name="MAX">Infinity</field>
+                        <field name="PRECISION">0</field>
+                        <next>
+                          <block type="field_static" id="lY@,//C7uWh%-;9kLwI(">
+                            <field name="TEXT">nanoseconds</field>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="p8H,9)}BPt(|]bi4Ft[^" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="gC9-^^O+@0@f^h5)tmFm" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="B=52}+SVbnlnC=5R0;EH"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="gkS1^`;DLT$4.NxEo?JJ"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="0Nr4`M,jP2xdcz?[qqYV">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="a+zjs_PO7=to7,=^|5b5" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">set_duty</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="3{Q;AW|ZKbRW3!cAC,oV">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="33{|~~!ixM9@G#I|.tDu">
+            <field name="TEXT">Set duty of</field>
+            <next>
+              <block type="field_variable" id="d/Ytz`O%Tlki#?obv6(9">
+                <field name="TEXT">pwm</field>
+                <field name="FIELDNAME">PWM</field>
+                <next>
+                  <block type="field_static" id="a!-d{_2hZeeF+~z;sLv7">
+                    <field name="TEXT">to</field>
+                    <next>
+                      <block type="field_number" id="A(W(0%2JLt[9rf?.cMO~">
+                        <field name="VALUE">5000</field>
+                        <field name="FIELDNAME">duty</field>
+                        <field name="MIN">0</field>
+                        <field name="MAX">Infinity</field>
+                        <field name="PRECISION">0</field>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="A-`AVly*9KE3H4lT|O?N" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="2sAQ1IKxh}Z#b_oFLu~8" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="AzccN%($i#hI^Z7?6F0."></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="o:0hB#?ni5F!d#wF(.6z"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="C%Kmst~?`NC!9jxX0/fU">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="^1vHkRe,.M^T(LqHc!vv" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">set_frequency</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="3{Q;AW|ZKbRW3!cAC,oV">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="33{|~~!ixM9@G#I|.tDu">
+            <field name="TEXT">Set frequency of</field>
+            <next>
+              <block type="field_variable" id="d/Ytz`O%Tlki#?obv6(9">
+                <field name="TEXT">pwm</field>
+                <field name="FIELDNAME">PWM</field>
+                <next>
+                  <block type="field_static" id="a!-d{_2hZeeF+~z;sLv7">
+                    <field name="TEXT">to</field>
+                    <next>
+                      <block type="field_number" id="A(W(0%2JLt[9rf?.cMO~">
+                        <field name="VALUE">50</field>
+                        <field name="FIELDNAME">frequency</field>
+                        <field name="MIN">0</field>
+                        <field name="MAX">Infinity</field>
+                        <field name="PRECISION">0</field>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id=",/T|)Q78U*B~_00-I2yn" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="WY(__3j80LCiBk,o2G;B" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="Nke;]YBe}b;~_9Nj2)OR"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="N}3iic`;%rdOMi]LS6,D"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="sR^$!}Q-ywtW-Kh+NwuP">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block></xml>

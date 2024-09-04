@@ -6,6 +6,15 @@
 
 import * as Blockly from "blockly/core";
 
+import {
+  defaultVariableValidator,
+  pinModeBlockValidator,
+  adcBlockValidator,
+  pwmBlockValidator,
+  i2cBlockValidator,
+  i2cPinBlockValidator,
+} from "./validator";
+
 Blockly.Blocks["string_block"] = {
   init: function () {
     this.appendDummyInput().appendField(
@@ -436,9 +445,10 @@ Blockly.Blocks["pin_state"] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour("#0768e8");
+    this.setColour("#005d8f");
     this.setTooltip("");
     this.setHelpUrl("");
+    this.setOnChange(pinModeBlockValidator);
   },
 };
 
@@ -462,7 +472,7 @@ Blockly.Blocks["pin_mode"] = {
       );
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour("#0768e8");
+    this.setColour("#005d8f");
     this.setTooltip("");
     this.setHelpUrl("");
   },
@@ -486,9 +496,305 @@ Blockly.Blocks["pin_value"] = {
       );
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour("#0768e8");
+    this.setColour("#005d8f");
     this.setTooltip("");
     this.setHelpUrl("");
+    this.setOnChange(pinModeBlockValidator);
+  },
+};
+
+// Blockly.Blocks["create_adc"] = {
+//   init: function () {
+//     this.appendDummyInput()
+//       .appendField("Create ADC from")
+//       .appendField(
+//         new Blockly.FieldVariable("pin", null, ["Pin"], "Pin"),
+//         "pin_variable"
+//       );
+//     this.setPreviousStatement(true, null);
+//     this.setNextStatement(true, null);
+//     this.setColour(230);
+//     this.setTooltip("");
+//     this.setHelpUrl("");
+//   },
+// };
+
+Blockly.Blocks["create_adc"] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField("Create ADC from")
+      .appendField(
+        new Blockly.FieldVariable("pin", null, ["Pin"], "Pin"),
+        "pin_variable"
+      )
+      .appendField("as")
+      .appendField(
+        new Blockly.FieldVariable("adc", null, ["ADC"], "ADC"),
+        "adc_variable"
+      );
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#ff4300");
+    this.setTooltip("");
+    this.setHelpUrl("");
+  },
+};
+
+Blockly.Blocks["read_adc"] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField("Read")
+      .appendField(
+        new Blockly.FieldVariable("adc", null, ["ADC"], "ADC"),
+        "ADC"
+      )
+      .appendField("assign variable to")
+      .appendField(
+        new Blockly.FieldVariable("var", defaultVariableValidator),
+        "Var"
+      );
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#ff4300");
+    this.setTooltip("");
+    this.setHelpUrl("");
+    this.setOnChange(adcBlockValidator);
+  },
+};
+
+Blockly.Blocks["read_micro_volt"] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField("Read micro volts from ")
+      .appendField(
+        new Blockly.FieldVariable("adc", null, ["ADC"], "ADC"),
+        "ADC"
+      )
+      .appendField("and assign to")
+      .appendField(
+        new Blockly.FieldVariable("var", defaultVariableValidator),
+        "Var"
+      );
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#ff4300");
+    this.setTooltip("");
+    this.setHelpUrl("");
+    this.setOnChange(adcBlockValidator);
+  },
+};
+
+Blockly.Blocks["create_pwm"] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField("Create")
+      .appendField(
+        new Blockly.FieldVariable("pwm", null, ["PWM"], "PWM"),
+        "PWM"
+      )
+      .appendField("from")
+      .appendField(
+        new Blockly.FieldVariable("pin", null, ["Pin"], "Pin"),
+        "Pin"
+      )
+      .appendField("with Frequency")
+      .appendField(new Blockly.FieldNumber(50, 0, Infinity, 10), "frequency")
+      .appendField("Duty")
+      .appendField(new Blockly.FieldNumber(8000, 0, Infinity, 10), "duty");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#6e9d2f");
+    this.setTooltip("");
+    this.setHelpUrl("");
+    this.setOnChange(pinModeBlockValidator);
+  },
+};
+
+Blockly.Blocks["set_pwm_duty"] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(" Set duty cycle of")
+      .appendField(
+        new Blockly.FieldVariable("pwm", null, ["PWM"], "PWM"),
+        "PWM"
+      )
+      .appendField("to")
+      .appendField(new Blockly.FieldNumber(32768, 0), "duty_cycle");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#6e9d2f");
+    this.setTooltip("");
+    this.setHelpUrl("");
+    this.setOnChange(pwmBlockValidator)
+  },
+};
+
+Blockly.Blocks["init_pwm"] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField("Initialize")
+      .appendField(
+        new Blockly.FieldVariable("pwm", null, ["PWM"], "PWM"),
+        "PWM"
+      )
+      .appendField("with Frequency")
+      .appendField(new Blockly.FieldNumber(50, 0, Infinity, 10), "frequency")
+      .appendField("Duty")
+      .appendField(new Blockly.FieldNumber(8000, 0, Infinity, 10), "duty");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#6e9d2f");
+    this.setTooltip("");
+    this.setHelpUrl("");
+    this.setOnChange(pwmBlockValidator)
+  },
+};
+
+Blockly.Blocks["deinitilize_pwm"] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField("Deinitialize")
+      .appendField(
+        new Blockly.FieldVariable("pwm", null, ["PWM"], "PWM"),
+        "PWM"
+      );
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#6e9d2f");
+    this.setTooltip("");
+    this.setHelpUrl("");
+    this.setOnChange(pwmBlockValidator)
+  },
+};
+
+Blockly.Blocks["set_duty_ns"] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField("Set duty of")
+      .appendField(
+        new Blockly.FieldVariable("pwm", null, ["PWM"], "PWM"),
+        "PWM"
+      )
+      .appendField("to")
+      .appendField(new Blockly.FieldNumber(5000, 0), "duty_ns")
+      .appendField("nanoseconds");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#6e9d2f");
+    this.setTooltip("");
+    this.setHelpUrl("");
+    this.setOnChange(pwmBlockValidator)
+  },
+};
+
+Blockly.Blocks["set_frequency"] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField("Set frequency of")
+      .appendField(
+        new Blockly.FieldVariable("pwm", null, ["PWM"], "PWM"),
+        "PWM"
+      )
+      .appendField("to")
+      .appendField(new Blockly.FieldNumber(50, 0), "frequency");
+    this.setColour("#6e9d2f");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip("");
+    this.setHelpUrl("");
+    this.setOnChange(pwmBlockValidator)
+  },
+};
+
+Blockly.Blocks["i2c"] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField("Create I2C with SCL")
+      .appendField(
+        new Blockly.FieldVariable("scl_pin", null, ["Pin"], "Pin"),
+        "sclPin"
+      )
+      .appendField("SDA")
+      .appendField(
+        new Blockly.FieldVariable("sda_pin", null, ["Pin"], "Pin"),
+        "sdaPin"
+      )
+      .appendField("of frequency")
+      .appendField(new Blockly.FieldNumber(400000, 0), "frequency")
+      .appendField("assign to")
+      .appendField(
+        new Blockly.FieldVariable("i2c", null, ["I2C"], "I2C"),
+        "i2c"
+      );
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#797c7d");
+    this.setTooltip("");
+    this.setHelpUrl("");
+    this.setOnChange(i2cPinBlockValidator);
+  },
+};
+
+Blockly.Blocks["i2c_init"] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField("I2C init using SCL")
+      .appendField(
+        new Blockly.FieldVariable("scl_pin", null, ["Pin"], "Pin"),
+        "sclPin"
+      )
+      .appendField("SDA")
+      .appendField(
+        new Blockly.FieldVariable("sda_pin", null, ["Pin"], "Pin"),
+        "sdaPin"
+      )
+      .appendField("with frequency")
+      .appendField(new Blockly.FieldNumber(400000, 0), "frequency")
+      .appendField("assign to")
+      .appendField(
+        new Blockly.FieldVariable("i2c", null, ["I2C"], "I2C"),
+        "i2c"
+      );
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#797c7d");
+    this.setTooltip("");
+    this.setHelpUrl("");
+    this.setOnChange(i2cPinBlockValidator);
+  },
+};
+
+Blockly.Blocks["deint_i2c"] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField("Deinitialize")
+      .appendField(
+        new Blockly.FieldVariable("i2c", null, ["I2C"], "I2C"),
+        "i2c"
+      );
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#797c7d");
+    this.setTooltip("");
+    this.setHelpUrl("");
+    this.setOnChange(i2cBlockValidator);
+  },
+};
+
+Blockly.Blocks["i2c_scan"] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField("Scan for devices using")
+      .appendField(
+        new Blockly.FieldVariable("i2c", null, ["I2C"], "I2C"),
+        "I2C"
+      );
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#797c7d");
+    this.setTooltip("");
+    this.setHelpUrl("");
+    this.setOnChange(i2cBlockValidator);
   },
 };
 

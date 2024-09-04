@@ -26,6 +26,9 @@ class MicropythonGenerator extends PythonGenerator {
   }
 
   finish(code) {
+    if(code == "") return "";
+    console.log("this is from generator class")
+    console.log(code)
     // Convert the definitions dictionary to a list
     var imports = [];
     for (var name in this.definitions_) {
